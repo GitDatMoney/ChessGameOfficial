@@ -22,7 +22,7 @@ char chessPiece::get_pieceColor() {
 	return pieceColor;
 }
 
-//Defines the characteristics of the pawn
+//Defines the Pawn
 class Pawn: public chessPiece {
 
 public:
@@ -49,6 +49,7 @@ bool Pawn::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8
 
 }
 
+//Defines the the Rook
 class Rook: public chessPiece {
 
 public:
@@ -67,6 +68,7 @@ bool Rook::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8
 
 }
 
+//Defines the Knight
 class Knight: public chessPiece {
 
 public:
@@ -85,6 +87,7 @@ bool Knight::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)
 
 }
 
+//Defines the Bishop
 class Bishop: public chessPiece {
 
 public:
@@ -103,6 +106,7 @@ bool Bishop::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)
 
 }
 
+//Defines the Queen
 class Queen: public chessPiece {
 
 public:
@@ -115,4 +119,8 @@ Queen::Queen(char pieceType) {
 
 	this->pieceColor = pieceColor;
 	pieceType = 'q';
+}
+//TODO
+bool Queen::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+
 }

@@ -124,3 +124,22 @@ Queen::Queen(char pieceType) {
 bool Queen::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
 
 }
+
+//Defines the king
+class King: public chessPiece {
+
+public:
+	King(char pieceColor);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+
+};
+
+King::King(char pieceType) {
+
+	this->pieceColor = pieceColor;
+	pieceType = 'q';
+}
+//TODO
+bool King::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+
+}

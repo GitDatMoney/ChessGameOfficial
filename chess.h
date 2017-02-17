@@ -12,6 +12,11 @@ private:
 
 public:
 	chess(){
-	      cout << "In the Constructor\n";
+	      for(int i = 0; i < 8; i++){
+					for(int j = 0; j < 8; j++){
+						chessPieceArray[i][j] = new Pawn('W');
+						break;
+					}
+				}
 	    }
 };

@@ -8,7 +8,7 @@ using namespace std;
 class chess {
 
 private:
-	chessPiece chessPieceArray[8][8];
+	chessPiece* chessPieceArray[8][8];
 
 public:
 	chess(){

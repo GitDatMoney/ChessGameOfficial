@@ -22,6 +22,10 @@ char chessPiece::get_pieceColor() {
 	return pieceColor;
 }
 
+bool chessPiece::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+
+}
+
 //Defines the Pawn
 class Pawn: public chessPiece {
 

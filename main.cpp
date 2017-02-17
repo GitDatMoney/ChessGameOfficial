@@ -3,8 +3,12 @@
 #include "chess.h"
 #include <iostream>
 
+<<<<<<< HEAD
 using namespace std;
 #include <iostream>
+
+int main() {
+>>>>>>> Main changes
 
 using namespace std;
 int main() {

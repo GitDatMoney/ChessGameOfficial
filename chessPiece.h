@@ -10,7 +10,7 @@ public:
 	void statusPrint();
 
 protected:
-	char pieceColor; 
+	char pieceColor;
 	char pieceType;
 };
 
@@ -34,7 +34,6 @@ public:
 	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
 
 };
-
 Pawn::Pawn(char pieceColor) {
 
 	this->pieceColor = pieceColor;

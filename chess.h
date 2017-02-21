@@ -11,12 +11,14 @@ private:
 	chessPiece* chessPieceArray[8][8];
 
 public:
-	chess(){
-	      for(int i = 0; i < 8; i++){
-					for(int j = 0; j < 8; j++){
-						chessPieceArray[i][j] = new Pawn('W');
-						break;
-					}
-				}
-	    }
+	chess()
 };
+
+chess::chess() {
+	for(int i = 0; i < 8; i++){
+		for(int j = 0; j < 8; j++){
+			chessPieceArray[i][j] = new Pawn('W');
+			break;
+		}
+	}
+}

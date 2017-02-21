@@ -20,5 +20,4 @@ public:
 				cout << endl;
 			}
 	 }
-
 };

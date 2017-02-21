@@ -7,7 +7,6 @@ using namespace std;
 
 int main() {
 
-using namespace std;
 
 int main() {
 	chess theBoard;

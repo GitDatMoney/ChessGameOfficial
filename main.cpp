@@ -20,6 +20,7 @@ int main() {
 		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Options\n5) Exit" << endl;
 		cin >> selection;
 		int x1,x2,y1,y2;
+
 		switch(selection) {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
@@ -32,6 +33,13 @@ int main() {
 				cin >> y2;
 				cout << "Ending Column: ";
 				cin >> x2;
+					//x1,y1 are the position the user wants to move a piece from,
+					//X2,y2 are the position the user wants to move a piece to,
+
+				//I need you to find a way to make the following line of code work, change it what way you need
+				// and leave LOTS of comments on what you did.
+				
+				//theBoard->chessPieceArray[x1][y1]->pieceMove(x2,y2, theBoard->chessPieceArray);
 			break;
 
 			case 2:

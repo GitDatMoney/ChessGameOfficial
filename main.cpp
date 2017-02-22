@@ -13,7 +13,10 @@ int main() {
 	int selection = 0;
 	cout << "Welcome To Chess" << endl;
 	bool toBreak = false;
-	chess* theBoard = new chess();
+	//You don't need to use new unless you are making a pointer, which we don't need here
+	chess theBoard = chess();
+	//Just to test that the board initializes correctly
+	theBoard.printBoard();
 
 	while(true) {
 		cout << "Please Select A Menu Option: " << endl;
@@ -24,7 +27,7 @@ int main() {
 		switch(selection) {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
-				theBoard->setupBoard();
+				// theBoard->setupBoard();
 				cout << "Inital Row: ";
 				cin >> y1;
 				cout << "Inital Column: ";
@@ -40,6 +43,11 @@ int main() {
 				// and leave LOTS of comments on what you did.
 				
 				//theBoard->chessPieceArray[x1][y1]->pieceMove(x2,y2, theBoard->chessPieceArray);
+				//Sam: We're trying to access the array, however the array is a private data member inside of the chess object
+				//so we have to write an intermediary function to pass the values through
+				//Check chess::move();
+				theBoard.move(x1,y1,x2,y2);
+
 			break;
 
 			case 2:

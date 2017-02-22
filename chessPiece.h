@@ -23,9 +23,37 @@ char chessPiece::get_pieceColor() {
 }
 
 bool chessPiece::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+	if(new_xPos >= new_yPos > 8){
+		cout << "Invalid Position" << endl;
+	} else {
+		cout << "Valid Move";
+	}
+}
+//Defines A null Piece
+class NullPiece: public chessPiece {
+
+public:
+	NullPiece(char pieceColor);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+
+};
+NullPiece::NullPiece(char pieceColor) {
+
+	this->pieceColor = pieceColor;
+	pieceType = '*';
+}
+//TODO
+bool NullPiece::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+
+	if(pieceColor == 'w') {
+
+	}
+	else
+	{
+
+	}
 
 }
-
 //Defines the Pawn
 class Pawn: public chessPiece {
 
@@ -118,10 +146,10 @@ public:
 
 };
 
-Queen::Queen(char pieceType) {
+Queen::Queen(char pieceColor) {
 
 	this->pieceColor = pieceColor;
-	pieceType = 'q';
+	pieceType = 'Q';
 }
 //TODO
 bool Queen::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
@@ -137,10 +165,10 @@ public:
 
 };
 
-King::King(char pieceType) {
+King::King(char pieceColor) {
 
 	this->pieceColor = pieceColor;
-	pieceType = 'q';
+	pieceType = 'K';
 }
 //TODO
 bool King::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {

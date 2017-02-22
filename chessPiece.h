@@ -4,7 +4,7 @@
 class chessPiece {
 
 public:
-	virtual bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+	virtual bool pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]);
 	char get_pieceType();
 	char get_pieceColor();
 	void statusPrint();
@@ -22,7 +22,7 @@ char chessPiece::get_pieceColor() {
 	return pieceColor;
 }
 
-bool chessPiece::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+bool chessPiece::pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]) {
 
 }
 
@@ -31,7 +31,7 @@ class Pawn: public chessPiece {
 
 public:
 	Pawn(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]);
 
 };
 Pawn::Pawn(char pieceColor) {
@@ -40,7 +40,7 @@ Pawn::Pawn(char pieceColor) {
 	pieceType = 'p';
 }
 //TODO
-bool Pawn::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+bool Pawn::pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]) {
 
 	if(pieceColor == 'w') {
 
@@ -57,7 +57,7 @@ class Rook: public chessPiece {
 
 public:
 	Rook(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]);
 
 };
 
@@ -67,7 +67,7 @@ Rook::Rook(char pieceColor) {
 	pieceType = 'r';
 }
 //TODO
-bool Rook::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+bool Rook::pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]) {
 
 }
 
@@ -76,7 +76,7 @@ class Knight: public chessPiece {
 
 public:
 	Knight(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]);
 
 };
 
@@ -86,7 +86,7 @@ Knight::Knight(char pieceColor) {
 	pieceType = 'k';
 }
 //TODO
-bool Knight::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+bool Knight::pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]) {
 
 }
 
@@ -95,7 +95,7 @@ class Bishop: public chessPiece {
 
 public:
 	Bishop(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]);
 
 };
 
@@ -105,7 +105,7 @@ Bishop::Bishop(char pieceColor) {
 	pieceType = 'b';
 }
 //TODO
-bool Bishop::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+bool Bishop::pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]) {
 
 }
 
@@ -114,7 +114,7 @@ class Queen: public chessPiece {
 
 public:
 	Queen(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]);
 
 };
 
@@ -124,7 +124,7 @@ Queen::Queen(char pieceType) {
 	pieceType = 'q';
 }
 //TODO
-bool Queen::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+bool Queen::pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]) {
 
 }
 
@@ -133,7 +133,7 @@ class King: public chessPiece {
 
 public:
 	King(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
+	bool pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]);
 
 };
 
@@ -143,6 +143,6 @@ King::King(char pieceType) {
 	pieceType = 'q';
 }
 //TODO
-bool King::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
+bool King::pieceMove(int new_xPos, int new_yPos, chessPiece chessPieceArray[8][8]) {
 
 }

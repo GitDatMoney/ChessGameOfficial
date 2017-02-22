@@ -12,13 +12,11 @@ private:
 
 public:
 	chess(){
-	    for(int i = 0; i < 8; i++){
-				for(int j = 0; j < 8; j++){
-					chessPieceArray[i][j] = new Pawn('W');
-					cout<< chessPieceArray[i][j]->get_pieceColor() << " ";
+	      for(int i = 0; i < 8; i++){
+					for(int j = 0; j < 8; j++){
+						chessPieceArray[i][j] = new Pawn('W');
+						break;
+					}
 				}
-				cout << endl;
-			}
-	 }
-
+	    }
 };

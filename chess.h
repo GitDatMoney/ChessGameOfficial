@@ -1,8 +1,8 @@
 //chess.h
 #include <iostream>
+#include "chessPiece.h"
 
 using namespace std;
-#include "chessPiece.h"
 
 //Class that contains the "board" which holds all the chessPiece objects
 class chess {

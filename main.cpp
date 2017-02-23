@@ -1,3 +1,4 @@
+
 //main.cpp
 //Chess Initial Files
 #include "chess.h"
@@ -33,6 +34,7 @@ int main() {
 				cin >> y2;
 				cout << "Ending Column: ";
 				cin >> x2;
+<<<<<<< HEAD
 					//x1,y1 are the position the user wants to move a piece from,
 					//X2,y2 are the position the user wants to move a piece to,
 
@@ -40,6 +42,10 @@ int main() {
 				// and leave LOTS of comments on what you did.
 				
 				//theBoard->chessPieceArray[x1][y1]->pieceMove(x2,y2, theBoard->chessPieceArray);
+=======
+
+				theBoard->move(x1,y1,x2,y2);
+>>>>>>> origin/master
 			break;
 
 			case 2:

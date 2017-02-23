@@ -1,3 +1,4 @@
+
 //chessPiece.h
 
 //Defines the basic parameters of all chessPiece objects

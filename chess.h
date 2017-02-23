@@ -59,7 +59,18 @@ public:
 			 }
 	 }
 	void move(int x1, int y1, int x2, int y2) {
-		 chessPieceArray[x1][y1].pieceMove(x2, y2, chessPieceArray);
-		 cout << chessPieceArray[x1][y1].get_pieceType() << "\nYOYOYO" << endl;
+		bool validMove = true;
+		if ( x1 > 8 || x1 < 0 || y1 > 8 || y1 < 0 ) {
+			cout << "Invalid Starting position, Please Choose Another." << endl;
+			validMove = false;
+		}
+		if ( x2 > 8 || x2 < 0 || y2 > 8 || y2 < 0 ) {
+			cout << "Invalid Ending position, Please Choose Another." << endl;
+			validMove = false;
+
+		}
+		if (validMove) {
+			chessPieceArray[x1][y1].pieceMove(x2, y2, chessPieceArray);
+		}
 	}
 };

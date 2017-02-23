@@ -1,3 +1,4 @@
+
 //main.cpp
 //Chess Initial Files
 #include "chess.h"
@@ -34,7 +35,7 @@ int main() {
 				cout << "Ending Column: ";
 				cin >> x2;
 
-				theBoard.move(x1,y1,x2,y2);
+				theBoard->move(x1,y1,x2,y2);
 			break;
 
 			case 2:

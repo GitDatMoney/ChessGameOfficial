@@ -55,7 +55,7 @@ class Pawn: public chessPiece {
 
 public:
 	Pawn(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 
 };
 Pawn::Pawn(char pieceColor) {
@@ -66,7 +66,7 @@ Pawn::Pawn(char pieceColor) {
 //TODO
 //must be called with x1, y1 as well
 bool Pawn::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	
+
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;
@@ -93,7 +93,7 @@ class Rook: public chessPiece {
 
 public:
 	Rook(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 
 };
 
@@ -103,7 +103,7 @@ Rook::Rook(char pieceColor) {
 	pieceType = 'r';
 }
 //TODO
-bool Rook::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
+bool Rook::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;
@@ -115,7 +115,7 @@ class Knight: public chessPiece {
 
 public:
 	Knight(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 
 };
 
@@ -125,7 +125,7 @@ Knight::Knight(char pieceColor) {
 	pieceType = 'k';
 }
 //TODO
-bool Knight::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
+bool Knight::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;
@@ -137,7 +137,7 @@ class Bishop: public chessPiece {
 
 public:
 	Bishop(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 
 };
 
@@ -147,7 +147,7 @@ Bishop::Bishop(char pieceColor) {
 	pieceType = 'b';
 }
 //TODO
-bool Bishop::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
+bool Bishop::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;
@@ -159,7 +159,7 @@ class Queen: public chessPiece {
 
 public:
 	Queen(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 
 };
 
@@ -169,7 +169,7 @@ Queen::Queen(char pieceType) {
 	pieceType = 'q';
 }
 //TODO
-bool Queen::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
+bool Queen::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;
@@ -181,7 +181,7 @@ class King: public chessPiece {
 
 public:
 	King(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 
 };
 
@@ -191,7 +191,7 @@ King::King(char pieceType) {
 	pieceType = 'q';
 }
 //TODO
-bool King::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
+bool King::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;

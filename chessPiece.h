@@ -64,14 +64,22 @@ Pawn::Pawn(char pieceColor) {
 	pieceType = 'p';
 }
 //TODO
-bool Pawn::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-
+//must be called with x1, y1 as well
+bool Pawn::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
+	
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;
 	}
 	if(pieceColor == 'w') {
+		if (y1 == 6)
+		{
+			int i = 1;
+			while (chessPieceArray[y1-i][x1] == NullPiece('*')
+			{
 
+			}
+		}
 	}
 	else
 	{

@@ -70,7 +70,7 @@ public:
 
 		}
 		if (validMove) {
-			chessPieceArray[x1][y1].pieceMove(x2, y2, chessPieceArray);
+			chessPieceArray[x1][y1].pieceMove(x1,y1,x2, y2, chessPieceArray);
 		}
 	}
 };

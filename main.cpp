@@ -94,7 +94,7 @@ int main() {
 				cin >> y2;
 				cout << "Ending Column: ";
 				cin >> x2;
-
+				//x1, y1 are starting position:x2,y2 are ending position
 				theBoard->move(x1,y1,x2,y2);
 			break;
 

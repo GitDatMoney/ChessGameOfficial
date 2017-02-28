@@ -4,7 +4,7 @@
 class chessPiece {
 
 public:
-	virtual bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	virtual bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 	char get_pieceType();
 	char get_pieceColor();
 	void statusPrint();
@@ -22,7 +22,7 @@ char chessPiece::get_pieceColor() {
 	return pieceColor;
 }
 
-bool chessPiece::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
+bool chessPiece::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
 
 }
 //Defines A null Piece
@@ -70,20 +70,6 @@ bool Pawn::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** ch
 	if(new_xPos > 8 || new_yPos > 8){
 		cout << "Error Invalid Move!" << endl;
 		return false;
-	}
-	if(pieceColor == 'w') {
-		if (y1 == 6)
-		{
-			int i = 1;
-			while (chessPieceArray[y1-i][x1] == NullPiece('*')
-			{
-
-			}
-		}
-	}
-	else
-	{
-
 	}
 	return true;
 }

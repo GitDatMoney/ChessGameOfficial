@@ -18,6 +18,11 @@ public:
 		}
 
 	}
+	
+	chessPiece** getBoard()
+	{
+		return chessPieceArray;
+	}
 
 	void setupBoard() {
 		 //Add all pieces to a new board

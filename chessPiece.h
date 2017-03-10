@@ -101,7 +101,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 		i = 1;
 		while(x1-i < 8 && x1-i >=0 && (chessPieceArray[x1-i][y1].get_pieceType() == '*'|| chessPieceArray[x1-i][y1].get_pieceColor() != this->get_pieceColor()))
 		{
-			if (chessPieceArray[x1+i][y1].get_pieceType() != '*')
+			if (chessPieceArray[x1-i][y1].get_pieceType() != '*')
 			{
 				moves << x1 << y1 << x1-i << y1 << chessPieceArray[x1-i][y1].get_pieceType();
 				i = 10;

@@ -88,15 +88,43 @@ int main() {
 				theBoard->setupBoard();
 			//	cout << myBoard[3][1].get_pieceType() << endl;
 			//	cout << myBoard[7][2].getMoves(7,2,myBoard) << endl;
-				cout << theBoard->getAllMoves('w') << endl;
-				cout << "Inital Row: ";
-				cin >> y1;
-				cout << "Inital Column: ";
-				cin >> x1;
-				cout << "Ending Row: ";
-				cin >> y2;
-				cout << "Ending Column: ";
-				cin >> x2;
+				while(true)
+				{
+					theBoard->getAllMoves('w');
+					cout << "Inital Row: ";
+					cin >> y1;
+					cout << "Inital Column: ";
+					cin >> x1;
+					cout << "Ending Row: ";
+					cin >> y2;
+					cout << "Ending Column: ";
+					cin >> x2;
+					if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'w'))
+					{
+						if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
+						{
+							theBoard->printBoard();
+						}
+					}
+					cout << "Black's turn" << endl;
+					theBoard->getAllMoves('b');
+					cout << "Inital Row: ";
+					cin >> y1;
+					cout << "Inital Column: ";
+					cin >> x1;
+					cout << "Ending Row: ";
+					cin >> y2;
+					cout << "Ending Column: ";
+					cin >> x2;
+					if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b'))
+					{
+						if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
+						{
+							theBoard->printBoard();
+						}
+					}
+				}
+
 				//x1, y1 are starting position:x2,y2 are ending position
 				theBoard->move(x1,y1,x2,y2);
 			break;   

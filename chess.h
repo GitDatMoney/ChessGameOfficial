@@ -9,6 +9,9 @@ using namespace std;
 class chess {
 private:
 	chessPiece** chessPieceArray;
+	chessPiece** tempBoard;
+	string whiteMoves;
+	string blackMoves;
 public:
 	chess(){
 		//Initializes the chessPieceArray
@@ -16,6 +19,8 @@ public:
 		for(int i = 0; i < 8; i++) {
 			chessPieceArray[i] = new chessPiece[8];
 		}
+		whiteMoves = "";
+		blackMoves = "";
 
 	}
 	
@@ -79,7 +84,7 @@ public:
 		}
 	}
 	
-	string getAllMoves(char color)
+	void getAllMoves(char color)
 	{
 		string moves = "";
 		for (int i = 0; i < 8; i++)
@@ -92,7 +97,78 @@ public:
 				}
 			}
 		}
-		return moves;
+		if (color == 'w')
+		{
+			this->whiteMoves = moves;
+		}
+		else
+		{
+			this->blackMoves = moves;
+		}
 	}
+	
+	string getWhiteMoves()
+	{
+		return this->whiteMoves;
+	}
+	
+	string getBlackMoves()
+	{
+		return this->blackMoves;
+	}
+	
+	bool searchForMove(int x1, int y1, int x2, int y2, char c)
+	{
+		stringstream s;
+		s << x1 << y1 << x2 << y2;
+		string pMove = s.str();
+		if(c == 'w')
+		{
+			cout << x1-1 << y1-1 << x2-1 << y2-1 << endl;
+			bool exists = this->whiteMoves.find(pMove) != string::npos;
+			return exists;
+		}
+		else
+		{
+			bool exists = this->blackMoves.find(pMove) != string::npos;
+			return exists;
+		}
+	}
+	
+	bool move(int x1, int y1, int x2, int y2, char c)
+	{
+		chessPiece temp = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
+		chessPieceArray[x1][y1] = NullPiece('*');
+		if (c == 'w')
+		{
+			this->getBlackMoves();
+			if (this->blackMoves.find('q') != string::npos)
+			{
+				cout << "Puts King in danger" << endl;
+				return false;
+			}
+		}
+		else{
+			this->getWhiteMoves();
+			if (this->whiteMoves.find('q') != string::npos)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	void printBoard()
+	{
+			cout << endl << "     A:   B:   C:   E:   F:   G:   H:   I:\n" << endl;
+			for(int i = 0; i < 8; i++){
+				cout << i+1 << ": ";
+						 for(int j = 0; j < 8; j++){
+							 cout << "  " << chessPieceArray[i][j].get_pieceType() << "  ";
+						 }
+						 cout << "\n" << endl;
+			 }
+	}
+	
 	
 };

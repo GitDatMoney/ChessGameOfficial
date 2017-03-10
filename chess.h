@@ -18,11 +18,6 @@ public:
 		}
 
 	}
-	
-	chessPiece** getBoard()
-	{
-		return chessPieceArray;
-	}
 
 	void setupBoard() {
 		 //Add all pieces to a new board
@@ -78,21 +73,4 @@ public:
 			chessPieceArray[x1][y1].pieceMove(x1,y1,x2, y2, chessPieceArray);
 		}
 	}
-	
-	string getAllMoves(char color)
-	{
-		string moves = "";
-		for (int i = 0; i < 8; i++)
-		{
-			for (int j = 0; j < 8; j++)
-			{
-				if (chessPieceArray[i][j].get_pieceColor() == color)
-				{
-					moves.append(chessPieceArray[i][j].getMoves(i,j,chessPieceArray));
-				}
-			}
-		}
-		return moves;
-	}
-	
 };

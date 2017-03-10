@@ -75,20 +75,17 @@ int main() {
 	cout << "Welcome To Chess" << endl;
 	bool toBreak = false;
 	chess* theBoard = new chess();
-	chessPiece** myBoard = theBoard->getBoard();
-	
+
 	while(true) {
 		cout << "Please Select A Menu Option: " << endl;
 		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Options\n5) Exit" << endl;
 		cin >> selection;
 		int x1,x2,y1,y2;
+
 		switch(selection) {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
 				theBoard->setupBoard();
-			//	cout << myBoard[3][1].get_pieceType() << endl;
-			//	cout << myBoard[7][2].getMoves(7,2,myBoard) << endl;
-				cout << theBoard->getAllMoves('w') << endl;
 				cout << "Inital Row: ";
 				cin >> y1;
 				cout << "Inital Column: ";
@@ -99,7 +96,7 @@ int main() {
 				cin >> x2;
 				//x1, y1 are starting position:x2,y2 are ending position
 				theBoard->move(x1,y1,x2,y2);
-			break;   
+			break;
 
 			case 2:
 			break;

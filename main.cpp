@@ -86,8 +86,9 @@ int main() {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
 				theBoard->setupBoard();
-				cout << myBoard[1][1].get_pieceType() << endl;
-				cout << myBoard[1][1].getMoves(1,1,myBoard) << endl;
+			//	cout << myBoard[3][1].get_pieceType() << endl;
+			//	cout << myBoard[7][2].getMoves(7,2,myBoard) << endl;
+				cout << theBoard->getAllMoves('w') << endl;
 				cout << "Inital Row: ";
 				cin >> y1;
 				cout << "Inital Column: ";

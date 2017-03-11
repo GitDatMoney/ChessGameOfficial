@@ -131,7 +131,7 @@ int main() {
 						x2 = (int)x2C - 64;
 						cout << "Ending Row: ";
 						cin >> y2;
-						if(theBoard->searchForMove(x1-1,y1-1,x2-1,y2-1,'b'))
+						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b'))
 						{
 							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
 							{

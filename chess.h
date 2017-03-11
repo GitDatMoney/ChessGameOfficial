@@ -43,8 +43,8 @@ public:
 			chessPieceArray[0][0] = Rook('b');
 			chessPieceArray[0][1] = Knight('b');
 			chessPieceArray[0][2] = Bishop('b');
-			chessPieceArray[0][3] = King('b');
-			chessPieceArray[0][4] = Queen('b');
+			chessPieceArray[0][3] = Queen('b');
+			chessPieceArray[0][4] = King('b');
 			chessPieceArray[0][5] = Bishop('b');
 			chessPieceArray[0][6] = Knight('b');
 			chessPieceArray[0][7] = Rook('b');
@@ -52,8 +52,8 @@ public:
 			chessPieceArray[7][0] = Rook('w');
 			chessPieceArray[7][1] = Knight('w');
 			chessPieceArray[7][2] = Bishop('w');
-			chessPieceArray[7][4] = King('w');
 			chessPieceArray[7][3] = Queen('w');
+			chessPieceArray[7][4] = King('w');
 			chessPieceArray[7][5] = Bishop('w');
 			chessPieceArray[7][6] = Knight('w');
 			chessPieceArray[7][7] = Rook('w');

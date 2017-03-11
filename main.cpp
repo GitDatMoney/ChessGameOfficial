@@ -91,38 +91,51 @@ int main() {
 				while(true)
 				{
 					theBoard->getAllMoves('w');
-					cout << "Inital Row: ";
-					cin >> y1;
-					cout << "Inital Column: ";
-					cin >> x1;
-					cout << "Ending Row: ";
-					cin >> y2;
-					cout << "Ending Column: ";
-					cin >> x2;
-					if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'w'))
+					bool gettingMove = true;
+					cout << "White's turn" << endl;
+					while(gettingMove)
 					{
-						if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
+						cout << "Inital Row: ";
+						cin >> y1;
+						cout << "Inital Column: ";
+						cin >> x1;
+						cout << "Ending Row: ";
+						cin >> y2;
+						cout << "Ending Column: ";
+						cin >> x2;
+						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'w'))
 						{
-							theBoard->printBoard();
+							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
+							{
+								theBoard->printBoard();
+								gettingMove = false;
+							}
 						}
 					}
+					gettingMove = true;
 					cout << "Black's turn" << endl;
 					theBoard->getAllMoves('b');
-					cout << "Inital Row: ";
-					cin >> y1;
-					cout << "Inital Column: ";
-					cin >> x1;
-					cout << "Ending Row: ";
-					cin >> y2;
-					cout << "Ending Column: ";
-					cin >> x2;
-					if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b'))
+					cout << myBoard[0][3].getMoves(0,3,myBoard);
+					while(gettingMove)
 					{
-						if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
+						cout << "Inital Row: ";
+						cin >> y1;
+						cout << "Inital Column: ";
+						cin >> x1;
+						cout << "Ending Row: ";
+						cin >> y2;
+						cout << "Ending Column: ";
+						cin >> x2;
+						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b'))
 						{
-							theBoard->printBoard();
+							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
+							{
+								theBoard->printBoard();
+								gettingMove = false;
+							}
 						}
 					}
+
 				}
 
 				//x1, y1 are starting position:x2,y2 are ending position

@@ -124,7 +124,6 @@ public:
 		string pMove = s.str();
 		if(c == 'w')
 		{
-			cout << x1-1 << y1-1 << x2-1 << y2-1 << endl;
 			bool exists = this->whiteMoves.find(pMove) != string::npos;
 			return exists;
 		}
@@ -143,16 +142,20 @@ public:
 		if (c == 'w')
 		{
 			this->getBlackMoves();
-			if (this->blackMoves.find('q') != string::npos)
+			if (this->blackMoves.find('o') != string::npos)
 			{
 				cout << "Puts King in danger" << endl;
+				chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+				chessPieceArray[x2][y2] = temp;
 				return false;
 			}
 		}
 		else{
 			this->getWhiteMoves();
-			if (this->whiteMoves.find('q') != string::npos)
+			if (this->whiteMoves.find('o') != string::npos)
 			{
+				chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+				chessPieceArray[x2][y2] = temp;
 				return false;
 			}
 		}

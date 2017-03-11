@@ -380,7 +380,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			}
 		}
 		i = 1;
-		while(x1+i <= 8 && x1+i >=0 && (chessPieceArray[x1+i][y1].get_pieceType() == '*'|| chessPieceArray[x1+i][y1].get_pieceColor() != this->get_pieceColor()))
+		while(x1+i < 8 && x1+i >=0 && (chessPieceArray[x1+i][y1].get_pieceType() == '*'|| chessPieceArray[x1+i][y1].get_pieceColor() != this->get_pieceColor()))
 		{
 			if (chessPieceArray[x1+i][y1].get_pieceType() != '*')
 			{
@@ -395,7 +395,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 		i = 1;
 		while(x1-i < 8 && x1-i >=0 && (chessPieceArray[x1-i][y1].get_pieceType() == '*'|| chessPieceArray[x1-i][y1].get_pieceColor() != this->get_pieceColor()))
 		{
-			if (chessPieceArray[x1+i][y1].get_pieceType() != '*')
+			if (chessPieceArray[x1-i][y1].get_pieceType() != '*')
 			{
 				moves << x1 << y1 << x1-i << y1 << chessPieceArray[x1-i][y1].get_pieceType();
 				i = 10;
@@ -432,8 +432,31 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			i++;
 		}
 	}
-	else if (this-> get_pieceType() == 'K') //for king
+	else if (this-> get_pieceType() == 'o') //for king
 	{
+		if (this->get_pieceColor() == 'w') //this checks for castle
+		{
+			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1+1].get_pieceType() == '*' && chessPieceArray[x1][y1+2].get_pieceType() == '*' && chessPieceArray[y1][x1+3].get_pieceType() == 'r')
+			{
+				moves << x1 << y1 << 7 << 5 << '%'; //% will flag that it is a castle
+			}
+			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[y1][x1+4].get_pieceType() == 'r')
+			{
+				moves << x1 << y1 << 7 << 2 << '%'; //% will flag that it is a castle
+			}
+		}
+		else //this checks for castle for black king
+		{
+			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[y1][x1+4].get_pieceType() == 'r')
+			{
+				moves << x1 << y1 << 0 << 5 << '%'; //% will flag that it is a castle
+			}
+			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[y1][x1+4].get_pieceType() == 'r')
+			{
+				moves << x1 << y1 << 0 << 2 << '%'; //% will flag that it is a castle
+			}
+		}
+		
 		for (int i = -1; i < 2; i++ )
 		{
 			for (int j = -1; j < 2; j++)
@@ -614,10 +637,10 @@ public:
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 
-Queen::Queen(char pieceType) {
+Queen::Queen(char pieceColor) {
 
 	this->pieceColor = pieceColor;
-	pieceType = 'q';
+	this->pieceType = 'q';
 }
 //TODO
 bool Queen::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
@@ -641,10 +664,10 @@ public:
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 
-King::King(char pieceType) {
+King::King(char pieceColor) {
 
 	this->pieceColor = pieceColor;
-	pieceType = 'q';
+	this->pieceType = 'o'; //o is king
 }
 //TODO
 bool King::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {

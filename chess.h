@@ -59,7 +59,7 @@ public:
 			chessPieceArray[7][7] = Rook('w');
 
 			//Draw the Board to Console
-			cout << "     A:   B:   C:   E:   F:   G:   H:   I:\n" << endl;
+			cout << "     A:   B:   C:   D:   E:   F:   G:   H:\n" << endl;
 			for(int i = 0; i < 8; i++){
 				cout << i+1 << ": ";
 						 for(int j = 0; j < 8; j++){
@@ -163,7 +163,7 @@ public:
 	}
 	void printBoard()
 	{
-			cout << endl << "     A:   B:   C:   E:   F:   G:   H:   I:\n" << endl;
+			cout << endl << "     A:   B:   C:   D:   E:   F:   G:   H:\n" << endl;
 			for(int i = 0; i < 8; i++){
 				cout << i+1 << ": ";
 						 for(int j = 0; j < 8; j++){

@@ -73,11 +73,11 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			{
 				if (chessPieceArray[x1+1][y1+i].get_pieceType() == '*' && i == 0)
 				{
-					moves << x1 << y1 << x1-1 << y1+i << '*';
+					moves << x1 << y1 << x1+1 << y1+i << '*';
 				}
 				else if(chessPieceArray[x1+1][y1+i].get_pieceColor() == 'w' && i != 0)
 				{
-					moves << x1 << y1 << x1-1 << y1+i << chessPieceArray[x1-1][y1+i].get_pieceType();
+					moves << x1 << y1 << x1+1 << y1+i << chessPieceArray[x1-1][y1+i].get_pieceType();
 				}
 			i++;
 			}
@@ -306,6 +306,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1+i << y1+i << "*";
+					cout << "1!"  << x1 << y1 << x1+i << y1+i << endl;
 					i += 1;
 				}
 			}
@@ -313,7 +314,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			{
 				i = 10;
 			}
-
 		}
 		i = 1;
 		while (x1+i < 8 && y1-i >= 0)
@@ -328,6 +328,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1+i << y1-i << "*";
+					cout << "2"  << x1 << y1 << x1+i << y1-i << endl;
 					i += 1;
 				}
 			}
@@ -343,13 +344,14 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			{
 				if(chessPieceArray[x1-i][y1-i].get_pieceType() != '*')
 				{
-					cout << x1 << y1 << x1-i << y1-i << endl;
+
 					moves << x1 << y1 << x1-i << y1-i << chessPieceArray[x1-i][y1-i].get_pieceType();
 					i = 10;
 				}
 				else
 				{
 					moves << x1 << y1 << x1-i << y1-i << "*";
+					cout << "3"  << x1 << y1 << x1-i << y1-i << endl;
 					i += 1;
 				}
 			}
@@ -357,7 +359,9 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			{
 				i = 10;
 			}
+
 		}
+		i = 1;
 		while (x1-i >= 0 && y1+i < 8)
 		{
 			if (chessPieceArray[x1-i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1+i].get_pieceColor() != this->get_pieceColor()) 
@@ -365,19 +369,20 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				if(chessPieceArray[x1-i][y1+i].get_pieceType() != '*')
 				{
 					moves << x1 << y1 << x1-i << y1+i << chessPieceArray[x1-i][y1+i].get_pieceType();
-
 					i = 10;
 				}
 				else
 				{
 					moves << x1 << y1 << x1-i << y1+i << "*";
-					i += 1;
+					cout << "4"  << x1 << y1 << x1-i << y1+i << endl;
+					i += 1;					
 				}
 			}
 			else
 			{
 				i = 10;
 			}
+
 		}
 		i = 1;
 		while(x1+i < 8 && x1+i >=0 && (chessPieceArray[x1+i][y1].get_pieceType() == '*'|| chessPieceArray[x1+i][y1].get_pieceColor() != this->get_pieceColor()))

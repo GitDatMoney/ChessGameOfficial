@@ -94,11 +94,12 @@ int main() {
 					theBoard->getAllMoves('w');
 					bool gettingMove = true;
 					cout << "White's turn" << endl;
+					cout << myBoard[7][3].getMoves(7,3,myBoard) << endl;
 					while(gettingMove)
 					{
 						cout << "Inital Column: ";
 						cin >> x1C;
-						x1 = (int)x1C - 64;
+						x1 = (int)x1C - 64;  //Converts character to int, need to add bound  checking mechanism and make it case insensitive
 						cout << "Inital Row: ";
 						cin >> y1;
 						cout << "Ending Column: ";
@@ -118,8 +119,7 @@ int main() {
 					gettingMove = true;
 					cout << "Black's turn" << endl;
 					theBoard->getAllMoves('b');
-					cout << myBoard[0][3].getMoves(0,3,myBoard);
-					while(gettingMove)
+						while(gettingMove)
 					{
 						cout << "Inital Column: ";
 						cin >> x1C;

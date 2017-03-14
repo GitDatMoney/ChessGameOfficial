@@ -82,21 +82,66 @@ int main() {
 		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Options\n5) Exit" << endl;
 		cin >> selection;
 		int x1,x2,y1,y2;
+		char x1C, x2C;
 		switch(selection) {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
 				theBoard->setupBoard();
 			//	cout << myBoard[3][1].get_pieceType() << endl;
 			//	cout << myBoard[7][2].getMoves(7,2,myBoard) << endl;
-				cout << theBoard->getAllMoves('w') << endl;
-				cout << "Inital Row: ";
-				cin >> y1;
-				cout << "Inital Column: ";
-				cin >> x1;
-				cout << "Ending Row: ";
-				cin >> y2;
-				cout << "Ending Column: ";
-				cin >> x2;
+				while(true)
+				{
+					theBoard->getAllMoves('w');
+					bool gettingMove = true;
+					cout << "White's turn" << endl;
+					cout << myBoard[7][3].getMoves(7,3,myBoard) << endl;
+					while(gettingMove)
+					{
+						cout << "Inital Column: ";
+						cin >> x1C;
+						x1 = (int)x1C - 64;  //Converts character to int, need to add bound  checking mechanism and make it case insensitive
+						cout << "Inital Row: ";
+						cin >> y1;
+						cout << "Ending Column: ";
+						cin >> x2C;
+						x2 = (int)x2C - 64;
+						cout << "Ending Row: ";
+						cin >> y2;
+						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'w'))
+						{
+							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
+							{
+								theBoard->printBoard();
+								gettingMove = false;
+							}
+						}
+					}
+					gettingMove = true;
+					cout << "Black's turn" << endl;
+					theBoard->getAllMoves('b');
+						while(gettingMove)
+					{
+						cout << "Inital Column: ";
+						cin >> x1C;
+						x1 = (int)x1C - 64;
+						cout << "Inital Row: ";
+						cin >> y1;
+						cout << "Ending Column: ";
+						cin >> x2C;
+						x2 = (int)x2C - 64;
+						cout << "Ending Row: ";
+						cin >> y2;
+						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b'))
+						{
+							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
+							{
+								theBoard->printBoard();
+								gettingMove = false;
+							}
+						}
+					}
+				}
+
 				//x1, y1 are starting position:x2,y2 are ending position
 				theBoard->move(x1,y1,x2,y2);
 			break;   
@@ -127,3 +172,4 @@ int main() {
 
 	return 0;
 }
+

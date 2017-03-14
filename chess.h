@@ -9,6 +9,9 @@ using namespace std;
 class chess {
 private:
 	chessPiece** chessPieceArray;
+	chessPiece** tempBoard;
+	string whiteMoves;
+	string blackMoves;
 public:
 	chess(){
 		//Initializes the chessPieceArray
@@ -16,6 +19,8 @@ public:
 		for(int i = 0; i < 8; i++) {
 			chessPieceArray[i] = new chessPiece[8];
 		}
+		whiteMoves = "";
+		blackMoves = "";
 
 	}
 	
@@ -38,8 +43,8 @@ public:
 			chessPieceArray[0][0] = Rook('b');
 			chessPieceArray[0][1] = Knight('b');
 			chessPieceArray[0][2] = Bishop('b');
-			chessPieceArray[0][3] = King('b');
-			chessPieceArray[0][4] = Queen('b');
+			chessPieceArray[0][3] = Queen('b');
+			chessPieceArray[0][4] = King('b');
 			chessPieceArray[0][5] = Bishop('b');
 			chessPieceArray[0][6] = Knight('b');
 			chessPieceArray[0][7] = Rook('b');
@@ -47,14 +52,14 @@ public:
 			chessPieceArray[7][0] = Rook('w');
 			chessPieceArray[7][1] = Knight('w');
 			chessPieceArray[7][2] = Bishop('w');
-			chessPieceArray[7][4] = King('w');
 			chessPieceArray[7][3] = Queen('w');
+			chessPieceArray[7][4] = King('w');
 			chessPieceArray[7][5] = Bishop('w');
 			chessPieceArray[7][6] = Knight('w');
 			chessPieceArray[7][7] = Rook('w');
 
 			//Draw the Board to Console
-			cout << "     A:   B:   C:   E:   F:   G:   H:   I:\n" << endl;
+			cout << "     A:   B:   C:   D:   E:   F:   G:   H:\n" << endl;
 			for(int i = 0; i < 8; i++){
 				cout << i+1 << ": ";
 						 for(int j = 0; j < 8; j++){
@@ -79,7 +84,7 @@ public:
 		}
 	}
 	
-	string getAllMoves(char color)
+	void getAllMoves(char color)
 	{
 		string moves = "";
 		for (int i = 0; i < 8; i++)
@@ -92,7 +97,81 @@ public:
 				}
 			}
 		}
-		return moves;
+		if (color == 'w')
+		{
+			this->whiteMoves = moves;
+		}
+		else
+		{
+			this->blackMoves = moves;
+		}
 	}
+	
+	string getWhiteMoves()
+	{
+		return this->whiteMoves;
+	}
+	
+	string getBlackMoves()
+	{
+		return this->blackMoves;
+	}
+	
+	bool searchForMove(int x1, int y1, int x2, int y2, char c)
+	{
+		stringstream s;
+		s << x1 << y1 << x2 << y2;
+		string pMove = s.str();
+		if(c == 'w')
+		{
+			bool exists = this->whiteMoves.find(pMove) != string::npos;
+			return exists;
+		}
+		else
+		{
+			bool exists = this->blackMoves.find(pMove) != string::npos;
+			return exists;
+		}
+	}
+	
+	bool move(int x1, int y1, int x2, int y2, char c)
+	{
+		chessPiece temp = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
+		chessPieceArray[x1][y1] = NullPiece('*');
+		if (c == 'w')
+		{
+			this->getBlackMoves();
+			if (this->blackMoves.find('o') != string::npos)
+			{
+				cout << "Puts King in danger" << endl;
+				chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+				chessPieceArray[x2][y2] = temp;
+				return false;
+			}
+		}
+		else{
+			this->getWhiteMoves();
+			if (this->whiteMoves.find('o') != string::npos)
+			{
+				chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+				chessPieceArray[x2][y2] = temp;
+				return false;
+			}
+		}
+		return true;
+	}
+	void printBoard()
+	{
+			cout << endl << "     A:   B:   C:   D:   E:   F:   G:   H:\n" << endl;
+			for(int i = 0; i < 8; i++){
+				cout << i+1 << ": ";
+						 for(int j = 0; j < 8; j++){
+							 cout << "  " << chessPieceArray[i][j].get_pieceType() << "  ";
+						 }
+						 cout << "\n" << endl;
+			 }
+	}
+	
 	
 };

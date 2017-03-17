@@ -23,7 +23,7 @@ public:
 		blackMoves = "";
 
 	}
-	
+
 	chessPiece** getBoard()
 	{
 		return chessPieceArray;
@@ -79,11 +79,8 @@ public:
 			validMove = false;
 
 		}
-		if (validMove) {
-			chessPieceArray[x1][y1].pieceMove(x1,y1,x2, y2, chessPieceArray);
-		}
 	}
-	
+
 	void getAllMoves(char color)
 	{
 		string moves = "";
@@ -106,17 +103,17 @@ public:
 			this->blackMoves = moves;
 		}
 	}
-	
+
 	string getWhiteMoves()
 	{
 		return this->whiteMoves;
 	}
-	
+
 	string getBlackMoves()
 	{
 		return this->blackMoves;
 	}
-	
+
 	bool searchForMove(int x1, int y1, int x2, int y2, char c)
 	{
 		stringstream s;
@@ -133,7 +130,7 @@ public:
 			return exists;
 		}
 	}
-	
+
 	bool move(int x1, int y1, int x2, int y2, char c)
 	{
 		chessPiece temp = chessPieceArray[x2][y2];
@@ -172,6 +169,6 @@ public:
 						 cout << "\n" << endl;
 			 }
 	}
-	
-	
+
+
 };

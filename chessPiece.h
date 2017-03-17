@@ -4,13 +4,14 @@
 class chessPiece {
 
 public:
-	virtual bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	//Abstract piece move inherited by all types of pieces
 	char get_pieceType();
 	char get_pieceColor();
+	//Gets all possible moves relative to the x1,y1 input from the user based on the board passed in
 	virtual string getMoves(int x1, int y1, chessPiece** chessPieceArray);
-	void statusPrint();
 
 protected:
+	//Data fields belonging to each piece
 	char pieceColor;
 	char pieceType;
 };
@@ -23,19 +24,18 @@ char chessPiece::get_pieceColor() {
 	return pieceColor;
 }
 
-bool chessPiece::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-
-}
-
 string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
 	stringstream moves;
+	//There is a null piece, return nothing
 	if (this->pieceType == '*')
 	{
 		return "";
 	}
+	//Pawn Moves
 	else if (this->pieceType == 'p')
 	{
+		//If white
 		if (pieceColor == 'w')
 		{
 			int i = -1;
@@ -60,7 +60,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			}
 		}
 		else
-		{
+		{//Piece is black
 			int i = -1;
 			if (x1 == 1)
 			{
@@ -83,6 +83,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			}
 		}
 	}
+	//Rook
 	else if (get_pieceType() == 'r')
 	{
 		int i = 1;
@@ -138,6 +139,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			i++;
 		}
 	}
+	//knight
 	else if (get_pieceType() == 'k')
 	{
 		if (x1+1 < 8 && y1+2 < 8)
@@ -148,7 +150,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			}
 		}
 		if (x1-1>=0 && y1+2 < 8)
-		{		
+		{
 			if (chessPieceArray[x1-1][y1+2].get_pieceType() == '*' || chessPieceArray[x1-1][y1+2].get_pieceColor() != this->get_pieceColor())
 			{
 				moves << x1 << y1 << x1-1 << y1+2 << chessPieceArray[x1-1][y1+2].get_pieceType();
@@ -162,7 +164,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			}
 		}
 		if (x1-1 >= 0 && y1-2 >= 0)
-		{		
+		{
 			if (chessPieceArray[x1-1][y1-2].get_pieceType() == '*' || chessPieceArray[x1-1][y1-2].get_pieceColor() != this->get_pieceColor())
 			{
 				moves << x1 << y1 << x1-1 << y1-2 << chessPieceArray[x1-1][y1-2].get_pieceType();
@@ -197,12 +199,13 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			}
 		}
 	}
+	//bishop
 	else if (get_pieceType() == 'b')
 	{
 		int i = 1;
 		while (x1+i < 8 && y1+i < 8)
 		{
-			if (chessPieceArray[x1+i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1+i].get_pieceColor() != this->get_pieceColor()) 
+			if (chessPieceArray[x1+i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1+i].get_pieceColor() != this->get_pieceColor())
 			{
 				if(chessPieceArray[x1+i][y1+i].get_pieceType() != '*')
 				{
@@ -224,7 +227,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 		i = 1;
 		while (x1+i < 8 && y1-i >= 0)
 		{
-			if (chessPieceArray[x1+i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1-i].get_pieceColor() != this->get_pieceColor()) 
+			if (chessPieceArray[x1+i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1-i].get_pieceColor() != this->get_pieceColor())
 			{
 				if(chessPieceArray[x1+i][y1-i].get_pieceType() != '*')
 				{
@@ -246,7 +249,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 		i = 1;
 		while (x1-i > 0 && y1-i >= 0)
 		{
-			if (chessPieceArray[x1-i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1-i].get_pieceColor() != this->get_pieceColor()) 
+			if (chessPieceArray[x1-i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1-i].get_pieceColor() != this->get_pieceColor())
 			{
 				if(chessPieceArray[x1-i][y1-i].get_pieceType() != '*')
 				{
@@ -268,35 +271,36 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 
 		}
 		i = 1;
+		//While the piece is in the range of the board;
 		while (x1-i >= 0 && y1+i < 8)
-		{
-			if (chessPieceArray[x1-i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1+i].get_pieceColor() != this->get_pieceColor()) 
-			{
+		{//If there is no piece or a piece of the opposite color
+			if (chessPieceArray[x1-i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1+i].get_pieceColor() != this->get_pieceColor())
+			{//Piece ran into another piece
 				if(chessPieceArray[x1-i][y1+i].get_pieceType() != '*')
-				{
+				{//0
 					moves << x1 << y1 << x1-i << y1+i << chessPieceArray[x1-i][y1+i].get_pieceType();
 					i = 10;
 				}
 				else
-				{
+				{//Is a null piece, change the previous place of the piece to a null piece
 					moves << x1 << y1 << x1-i << y1+i << "*";
-					cout << "4"  << x1 << y1 << x1-i << y1+i << endl;
-					i += 1;					
+					i += 1;
 				}
 			}
 			else
-			{
+			{//Either the piece is blocked in, or the move is not valid for some reason
 				i = 10;
 			}
 
-		}		
+		}
 	}
+	//Queen
 	else if (this->get_pieceType() == 'q')
-	{
+	{//Basically the same as a combination of the rook and the Bishop
 		int i = 1;
 		while (x1+i < 8 && y1+i < 8)
 		{
-			if (chessPieceArray[x1+i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1+i].get_pieceColor() != this->get_pieceColor()) 
+			if (chessPieceArray[x1+i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1+i].get_pieceColor() != this->get_pieceColor())
 			{
 				if(chessPieceArray[x1+i][y1+i].get_pieceType() != '*')
 				{
@@ -318,7 +322,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 		i = 1;
 		while (x1+i < 8 && y1-i >= 0)
 		{
-			if (chessPieceArray[x1+i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1-i].get_pieceColor() != this->get_pieceColor()) 
+			if (chessPieceArray[x1+i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1+i][y1-i].get_pieceColor() != this->get_pieceColor())
 			{
 				if(chessPieceArray[x1+i][y1-i].get_pieceType() != '*')
 				{
@@ -340,7 +344,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 		i = 1;
 		while (x1-i > 0 && y1-i >= 0)
 		{
-			if (chessPieceArray[x1-i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1-i].get_pieceColor() != this->get_pieceColor()) 
+			if (chessPieceArray[x1-i][y1-i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1-i].get_pieceColor() != this->get_pieceColor())
 			{
 				if(chessPieceArray[x1-i][y1-i].get_pieceType() != '*')
 				{
@@ -364,7 +368,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 		i = 1;
 		while (x1-i >= 0 && y1+i < 8)
 		{
-			if (chessPieceArray[x1-i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1+i].get_pieceColor() != this->get_pieceColor()) 
+			if (chessPieceArray[x1-i][y1+i].get_pieceType() == '*' ||chessPieceArray[x1-i][y1+i].get_pieceColor() != this->get_pieceColor())
 			{
 				if(chessPieceArray[x1-i][y1+i].get_pieceType() != '*')
 				{
@@ -375,7 +379,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				{
 					moves << x1 << y1 << x1-i << y1+i << "*";
 					cout << "4"  << x1 << y1 << x1-i << y1+i << endl;
-					i += 1;					
+					i += 1;
 				}
 			}
 			else
@@ -461,7 +465,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				moves << x1 << y1 << 0 << 2 << '%'; //% will flag that it is a castle
 			}
 		}
-		
+
 		for (int i = -1; i < 2; i++ )
 		{
 			for (int j = -1; j < 2; j++)
@@ -470,7 +474,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				{
 					if (chessPieceArray[x1+i][y1+j].get_pieceType() == '*' || chessPieceArray[x1+i][y1+j].get_pieceColor() != this->get_pieceColor() && (i != 0 || j !=0))
 					{
-						moves << x1 << y1 << x1 << y1+i << chessPieceArray[x1+i][y1+j].get_pieceType();
+						moves << x1 << y1 << x1 + i << y1 + j << chessPieceArray[x1+i][y1+j].get_pieceType();
 					}
 				}
 			}
@@ -484,7 +488,6 @@ class NullPiece: public chessPiece {
 
 public:
 	NullPiece(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 NullPiece::NullPiece(char pieceColor) {
@@ -493,28 +496,16 @@ NullPiece::NullPiece(char pieceColor) {
 	pieceType = '*';
 }
 //TODO
-bool NullPiece::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
-
-	if(pieceColor == 'w') {
-
-	}
-	else
-	{
-
-	}
-
-}
 
 string NullPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
-	
+
 }
 //Defines the Pawn
 class Pawn: public chessPiece {
 
 public:
 	Pawn(char pieceColor);
-	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);};
 Pawn::Pawn(char pieceColor) {
 
@@ -523,14 +514,6 @@ Pawn::Pawn(char pieceColor) {
 }
 //TODO
 //must be called with x1, y1 as well
-bool Pawn::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-	return true;
-}
 
 string Pawn::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
@@ -560,7 +543,6 @@ class Rook: public chessPiece {
 
 public:
 	Rook(char pieceColor);
-	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 
@@ -570,15 +552,10 @@ Rook::Rook(char pieceColor) {
 	pieceType = 'r';
 }
 //TODO
-bool Rook::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
+
 string Rook::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
-	
+
 }
 
 //Defines the Knight
@@ -586,7 +563,6 @@ class Knight: public chessPiece {
 
 public:
 	Knight(char pieceColor);
-	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 
@@ -596,15 +572,10 @@ Knight::Knight(char pieceColor) {
 	pieceType = 'k';
 }
 //TODO
-bool Knight::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
+
 string Knight::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
-	
+
 }
 
 //Defines the Bishop
@@ -612,7 +583,6 @@ class Bishop: public chessPiece {
 
 public:
 	Bishop(char pieceColor);
-	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 
@@ -622,15 +592,10 @@ Bishop::Bishop(char pieceColor) {
 	pieceType = 'b';
 }
 //TODO
-bool Bishop::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
+
 string Bishop::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
-	
+
 }
 
 //Defines the Queen
@@ -638,7 +603,6 @@ class Queen: public chessPiece {
 
 public:
 	Queen(char pieceColor);
-	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 
@@ -648,16 +612,11 @@ Queen::Queen(char pieceColor) {
 	this->pieceType = 'q';
 }
 //TODO
-bool Queen::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
+
 
 string Queen::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
-	
+
 }
 
 //Defines the king
@@ -665,7 +624,6 @@ class King: public chessPiece {
 
 public:
 	King(char pieceColor);
-	bool pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray);
 	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
 
@@ -675,39 +633,8 @@ King::King(char pieceColor) {
 	this->pieceType = 'o'; //o is king
 }
 //TODO
-bool King::pieceMove(int x1, int y1, int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
+
 string King::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

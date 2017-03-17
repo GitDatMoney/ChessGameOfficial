@@ -14,7 +14,7 @@ void tutorials ()
     //tutSkillLvl holds which level tutorial the user wants
     int tutSkillLvl;
 
-    // next cout statements are a menue to ask the user what kind of tutorials they want
+    // next cout statements are a menu to ask the user what kind of tutorials they want
     cout << "Aye fam, what kinda skills you got?" << endl;
     cout << endl;
     cout << "1: Beginner" << endl;
@@ -76,7 +76,7 @@ int main() {
 	bool toBreak = false;
 	chess* theBoard = new chess();
 	chessPiece** myBoard = theBoard->getBoard();
-	
+
 	while(true) {
 		cout << "Please Select A Menu Option: " << endl;
 		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Options\n5) Exit" << endl;
@@ -144,7 +144,7 @@ int main() {
 
 				//x1, y1 are starting position:x2,y2 are ending position
 				theBoard->move(x1,y1,x2,y2);
-			break;   
+			break;
 
 			case 2:
 			break;
@@ -172,4 +172,3 @@ int main() {
 
 	return 0;
 }
-

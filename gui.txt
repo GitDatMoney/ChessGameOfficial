@@ -1,0 +1,5 @@
+Chess gui video of doom:
+https://www.youtube.com/watch?v=_4EuZI8Q8cs
+
+Source code:
+https://yadi.sk/d/uqz1HerKrKWjV

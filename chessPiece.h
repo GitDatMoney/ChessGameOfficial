@@ -1,5 +1,8 @@
 //chessPiece.h
 #include <sstream>
+#include <iostream>
+using namespace std;
+#include <string>
 //Defines the basic parameters of all chessPiece objects
 class chessPiece {
 

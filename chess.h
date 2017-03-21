@@ -1,5 +1,9 @@
 //chess.h
 #include <iostream>
+#include <sstream>
+#include <string>
+#include "tutorials.h"
+#include "tutorials.cpp"
 
 using namespace std;
 #include "chessPiece.h"
@@ -59,16 +63,13 @@ public:
 			chessPieceArray[7][7] = Rook('w');
 
 			//Draw the Board to Console
-			cout << "     A:   B:   C:   D:   E:   F:   G:   H:\n" << endl;
-			for(int i = 0; i < 8; i++){
-				cout << i+1 << ": ";
-						 for(int j = 0; j < 8; j++){
-							 cout << "  " << chessPieceArray[i][j].get_pieceType() << "  ";
-						 }
-						 cout << "\n" << endl;
-			 }
+
+			printBoard();
 	 }
-	void move(int x1, int y1, int x2, int y2) {
+
+
+	void move(int x1, int y1, int x2, int y2)
+	 {
 		bool validMove = true;
 		if ( x1 > 8 || x1 < 0 || y1 > 8 || y1 < 0 ) {
 			cout << "Invalid Starting position, Please Choose Another." << endl;
@@ -172,3 +173,22 @@ public:
 
 
 };
+
+
+
+
+
+//Regular Functions
+void checkCols(string &tempX1)
+{
+
+	while(!(tempX1.compare("A") == 0 || tempX1.compare("B") == 0 || tempX1.compare("C") == 0 || tempX1.compare("D") == 0  || tempX1.compare("E") == 0 || tempX1.compare("F") == 0 || tempX1.compare("G") == 0 || tempX1.compare("H") == 0))
+	{
+		cout << "Mah dawg, you think you l33t, well I am LEET3R" << endl;
+		cout << "So plz enter a valid column yo: " ;
+		cin >> tempX1;
+	}
+
+}
+
+//void checkRows(int )

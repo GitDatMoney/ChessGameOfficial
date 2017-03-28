@@ -1,6 +1,7 @@
+
 //main.cpp
 //Chess Initial Files
-#include "chess.h"
+#include "chess.cpp"
 #include <exception>
 #include <iostream>
 #include "chessGui.cpp"

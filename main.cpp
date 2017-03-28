@@ -3,6 +3,7 @@
 #include "chess.h"
 #include <exception>
 #include <iostream>
+#include "chessGui.cpp"
 using namespace std;
 
 
@@ -11,7 +12,7 @@ using namespace std;
 
 
 int main() {
-
+	ChessGUI theGui;
 	int selection = 0;
 	cout << "Welcome To Chess" << endl;
 	chess* theBoard = new chess();
@@ -27,6 +28,7 @@ int main() {
 		switch(selection) {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
+				theGui.printChessGUI();
 				theBoard->setupBoard();
 				while(true)
 				{

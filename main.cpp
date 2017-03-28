@@ -1,3 +1,4 @@
+
 //main.cpp
 //Chess Initial Files
 #include "chess.cpp"
@@ -28,8 +29,8 @@ int main() {
 		switch(selection) {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
-				theGui.printChessGUI();
 				theBoard->setupBoard();
+				theGui.printChessGUI(theBoard->getBoard());
 				while(true)
 				{
 					theBoard->getAllMoves('w');
@@ -96,7 +97,7 @@ int main() {
 						{
 							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
 							{
-								theBoard->printBoard();
+								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
 						}
@@ -165,7 +166,7 @@ int main() {
 						{
 							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
 							{
-								theBoard->printBoard();
+								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
 						}

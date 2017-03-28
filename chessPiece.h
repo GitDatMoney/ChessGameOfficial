@@ -1,191 +1,76 @@
 //chessPiece.h
-
+#include <sstream>
+#include <iostream>
+using namespace std;
+#include <string>
 //Defines the basic parameters of all chessPiece objects
 class chessPiece {
 
 public:
-	virtual bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
+	//Abstract piece move inherited by all types of pieces
 	char get_pieceType();
 	char get_pieceColor();
-	void statusPrint();
+	//Gets all possible moves relative to the x1,y1 input from the user based on the board passed in
+	virtual string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 
 protected:
+	//Data fields belonging to each piece
 	char pieceColor;
 	char pieceType;
 };
 
-char chessPiece::get_pieceType() {
-	return pieceType;
-}
-
-char chessPiece::get_pieceColor() {
-	return pieceColor;
-}
-
-bool chessPiece::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-
-}
 //Defines A null Piece
 class NullPiece: public chessPiece {
 
 public:
 	NullPiece(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]);
-
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
-NullPiece::NullPiece(char pieceColor) {
 
-	this->pieceColor = pieceColor;
-	pieceType = '*';
-}
-//TODO
-bool NullPiece::pieceMove(int new_xPos, int new_yPos, chessPiece (&chessPieceArray)[8][8]) {
-
-	if(pieceColor == 'w') {
-
-	}
-	else
-	{
-
-	}
-
-}
 //Defines the Pawn
 class Pawn: public chessPiece {
 
 public:
 	Pawn(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
-
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
-Pawn::Pawn(char pieceColor) {
-
-	this->pieceColor = pieceColor;
-	pieceType = 'p';
-}
-//TODO
-bool Pawn::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-	if(pieceColor == 'w') {
-
-	}
-	else
-	{
-
-	}
-	return true;
-}
 
 //Defines the the Rook
 class Rook: public chessPiece {
 
 public:
 	Rook(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
-
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
-
-Rook::Rook(char pieceColor) {
-
-	this->pieceColor = pieceColor;
-	pieceType = 'r';
-}
-//TODO
-bool Rook::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
 
 //Defines the Knight
 class Knight: public chessPiece {
 
 public:
 	Knight(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
-
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
-
-Knight::Knight(char pieceColor) {
-
-	this->pieceColor = pieceColor;
-	pieceType = 'k';
-}
-//TODO
-bool Knight::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
 
 //Defines the Bishop
 class Bishop: public chessPiece {
 
 public:
 	Bishop(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
-
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
-
-Bishop::Bishop(char pieceColor) {
-
-	this->pieceColor = pieceColor;
-	pieceType = 'b';
-}
-//TODO
-bool Bishop::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
 
 //Defines the Queen
 class Queen: public chessPiece {
 
 public:
 	Queen(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
-
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
-
-Queen::Queen(char pieceType) {
-
-	this->pieceColor = pieceColor;
-	pieceType = 'q';
-}
-//TODO
-bool Queen::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}
 
 //Defines the king
 class King: public chessPiece {
 
 public:
 	King(char pieceColor);
-	bool pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray);
-
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 };
-
-King::King(char pieceType) {
-
-	this->pieceColor = pieceColor;
-	pieceType = 'q';
-}
-//TODO
-bool King::pieceMove(int new_xPos, int new_yPos, chessPiece** chessPieceArray) {
-	if(new_xPos > 8 || new_yPos > 8){
-		cout << "Error Invalid Move!" << endl;
-		return false;
-	}
-}

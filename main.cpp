@@ -1,6 +1,7 @@
+
 //main.cpp
 //Chess Initial Files
-#include "chess.h"
+#include "chess.cpp"
 #include <exception>
 #include <iostream>
 #include "chessGui.cpp"
@@ -28,8 +29,8 @@ int main() {
 		switch(selection) {
 			case 1:
 				cout << "Beginning Game: \n\n" << endl;
-				theGui.printChessGUI();
 				theBoard->setupBoard();
+				theGui.printChessGUI(theBoard->getBoard());
 				while(true)
 				{
 					theBoard->getAllMoves('w');
@@ -96,9 +97,15 @@ int main() {
 						{
 							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
 							{
-								theBoard->printBoard();
+								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
+							else{
+								cout << "Invalid move, try again: " << endl;
+							}
+						}
+						else{
+							cout << "Invalid move, try again: " << endl;
 						}
 					}
 					gettingMove = true;
@@ -165,9 +172,15 @@ int main() {
 						{
 							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
 							{
-								theBoard->printBoard();
+								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
+							else{
+								cout << "Invalid move, try again: " << endl;
+							}
+						}
+						else{
+							cout << "Invalid move, try again: " << endl;
 						}
 					}
 				}

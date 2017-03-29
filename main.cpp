@@ -100,6 +100,12 @@ int main() {
 								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
+							else{
+								cout << "Invalid move, try again: " << endl;
+							}
+						}
+						else{
+							cout << "Invalid move, try again: " << endl;
 						}
 					}
 					gettingMove = true;
@@ -169,6 +175,12 @@ int main() {
 								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
+							else{
+								cout << "Invalid move, try again: " << endl;
+							}
+						}
+						else{
+							cout << "Invalid move, try again: " << endl;
 						}
 					}
 				}

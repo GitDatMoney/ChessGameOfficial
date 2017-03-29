@@ -124,6 +124,12 @@ bool chess::searchForMove(int x1, int y1, int x2, int y2, char c)
   if(c == 'w')
   {
     bool exists = this->whiteMoves.find(pMove) != string::npos;
+	cout << whiteMoves.find(pMove) << endl;
+	cout << whiteMoves.at(whiteMoves.find(pMove)+4)<< endl;
+	if (whiteMoves.at(whiteMoves.find(pMove) + 4) == '%')
+	{
+		cout << "Castle!" << endl;
+	}
     return exists;
   }
   else

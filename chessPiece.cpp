@@ -428,9 +428,9 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			{
 				moves << x1 << y1 << 7 << 6 << '%'; //% will flag that it is a castle
 			}
-			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[x1][y1+4].get_pieceType() == 'r')
+			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[x1][y1-4].get_pieceType() == 'r')
 			{
-				moves << x1 << y1 << 7 << 2 << '%'; //% will flag that it is a castle
+				moves << x1 << y1 << 7 << 1 << '%'; //% will flag that it is a castle
 			}
 		}
 		else //this checks for castle for black king
@@ -439,9 +439,9 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			{
 				moves << x1 << y1 << 0 << 6 << '%'; //% will flag that it is a castle
 			}
-			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[x1][y1+4].get_pieceType() == 'r')
+			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[x1][y1-4].get_pieceType() == 'r')
 			{
-				moves << x1 << y1 << 0 << 2 << '%'; //% will flag that it is a castle
+				moves << x1 << y1 << 0 << 1 << '%'; //% will flag that it is a castle
 			}
 		}
 

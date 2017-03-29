@@ -93,14 +93,37 @@ int main() {
               cin >> y2;
             }
 
-						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'w'))
+						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='%')
+						{
+							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
+							{
+								if(x2-1 == 6)
+								{
+									theBoard->move(7,7,7,5,'w');
+									theGui.printChessGUI(theBoard->getBoard());
+									gettingMove = false;
+								}
+								else
+								{
+									theBoard->move(7,0,7,2,'w');
+									theGui.printChessGUI(theBoard->getBoard());
+									gettingMove = false;
+								}
+
+							}
+							else{
+								cout << "Invalid move, try again: " << endl;
+							}
+						}
+						else if (theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
 						{
 							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'w'))
 							{
 								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
-							else{
+							else
+							{
 								cout << "Invalid move, try again: " << endl;
 							}
 						}
@@ -168,14 +191,37 @@ int main() {
               cin >> y2;
             }
 
-						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b'))
+						if(theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b')=='%')
+						{
+							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
+							{
+								if(x2-1 == 6)
+								{
+									theBoard->move(0,7,0,5,'b');
+									theGui.printChessGUI(theBoard->getBoard());
+									gettingMove = false;
+								}
+								else
+								{
+									theBoard->move(0,0,0,2,'b');
+									theGui.printChessGUI(theBoard->getBoard());
+									gettingMove = false;
+								}
+
+							}
+							else{
+								cout << "Invalid move, try again: " << endl;
+							}
+						}
+						else if (theBoard->searchForMove(y1-1,x1-1,y2-1,x2-1,'b')=='t')
 						{
 							if (theBoard->move(y1-1,x1-1,y2-1,x2-1,'b'))
 							{
 								theGui.printChessGUI(theBoard->getBoard());
 								gettingMove = false;
 							}
-							else{
+							else
+							{
 								cout << "Invalid move, try again: " << endl;
 							}
 						}
@@ -186,7 +232,6 @@ int main() {
 				}
 
 				//x1, y1 are starting position:x2,y2 are ending position
-				theBoard->move(x1,y1,x2,y2);
 			break;
 
 			case 2:

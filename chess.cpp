@@ -68,20 +68,6 @@ void chess::setupBoard() {
   printBoard();
 }
 
-void chess::move(int x1, int y1, int x2, int y2)
- {
-  bool validMove = true;
-  if ( x1 > 8 || x1 < 0 || y1 > 8 || y1 < 0 ) {
-    cout << "Invalid Starting position, Please Choose Another." << endl;
-    validMove = false;
-  }
-  if ( x2 > 8 || x2 < 0 || y2 > 8 || y2 < 0 ) {
-    cout << "Invalid Ending position, Please Choose Another." << endl;
-    validMove = false;
-
-  }
-}
-
 
 void chess::getAllMoves(char color)
 {
@@ -116,7 +102,7 @@ string chess::getBlackMoves()
   return this->blackMoves;
 }
 
-bool chess::searchForMove(int x1, int y1, int x2, int y2, char c)
+char chess::searchForMove(int x1, int y1, int x2, int y2, char c)
 {
   stringstream s;
   s << x1 << y1 << x2 << y2;
@@ -124,12 +110,22 @@ bool chess::searchForMove(int x1, int y1, int x2, int y2, char c)
   if(c == 'w')
   {
     bool exists = this->whiteMoves.find(pMove) != string::npos;
-    return exists;
+	if (whiteMoves.at(whiteMoves.find(pMove) + 4) == '%')
+	{
+		return '%';
+	}
+	else if(exists){return 't';}
+	else{return 'f';}
   }
   else
   {
     bool exists = this->blackMoves.find(pMove) != string::npos;
-    return exists;
+	if (blackMoves.at(blackMoves.find(pMove) + 4) == '%')
+	{
+		return '%';
+	}
+    else if(exists){return 't';}
+	else{return 'f';}
   }
 }
 

@@ -201,7 +201,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1+i << y1+i << "*";
-					cout << "1!"  << x1 << y1 << x1+i << y1+i << endl;
 					i += 1;
 				}
 			}
@@ -223,7 +222,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1+i << y1-i << "*";
-					cout << "2"  << x1 << y1 << x1+i << y1-i << endl;
 					i += 1;
 				}
 			}
@@ -246,7 +244,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1-i << y1-i << "*";
-					cout << "3"  << x1 << y1 << x1-i << y1-i << endl;
 					i += 1;
 				}
 			}
@@ -296,7 +293,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1+i << y1+i << "*";
-					cout << "1!"  << x1 << y1 << x1+i << y1+i << endl;
 					i += 1;
 				}
 			}
@@ -318,7 +314,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1+i << y1-i << "*";
-					cout << "2"  << x1 << y1 << x1+i << y1-i << endl;
 					i += 1;
 				}
 			}
@@ -341,7 +336,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1-i << y1-i << "*";
-					cout << "3"  << x1 << y1 << x1-i << y1-i << endl;
 					i += 1;
 				}
 			}
@@ -364,7 +358,6 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 				else
 				{
 					moves << x1 << y1 << x1-i << y1+i << "*";
-					cout << "4"  << x1 << y1 << x1-i << y1+i << endl;
 					i += 1;
 				}
 			}
@@ -431,24 +424,24 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 	{
 		if (this->get_pieceColor() == 'w') //this checks for castle
 		{
-			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1+1].get_pieceType() == '*' && chessPieceArray[x1][y1+2].get_pieceType() == '*' && chessPieceArray[y1][x1+3].get_pieceType() == 'r')
+			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1+1].get_pieceType() == '*' && chessPieceArray[x1][y1+2].get_pieceType() == '*' && chessPieceArray[x1][y1+3].get_pieceType() == 'r')
 			{
-				moves << x1 << y1 << 7 << 5 << '%'; //% will flag that it is a castle
+				moves << x1 << y1 << 7 << 6 << '%'; //% will flag that it is a castle
 			}
-			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[y1][x1+4].get_pieceType() == 'r')
+			if (x1 == 7 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[x1][y1-4].get_pieceType() == 'r')
 			{
-				moves << x1 << y1 << 7 << 2 << '%'; //% will flag that it is a castle
+				moves << x1 << y1 << 7 << 1 << '%'; //% will flag that it is a castle
 			}
 		}
 		else //this checks for castle for black king
 		{
-			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[y1][x1+4].get_pieceType() == 'r')
+			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1+1].get_pieceType() == '*' && chessPieceArray[x1][y1+2].get_pieceType() == '*'&& chessPieceArray[x1][y1+3].get_pieceType() == '*')
 			{
-				moves << x1 << y1 << 0 << 5 << '%'; //% will flag that it is a castle
+				moves << x1 << y1 << 0 << 6 << '%'; //% will flag that it is a castle
 			}
-			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[y1][x1+4].get_pieceType() == 'r')
+			if (x1 == 0 && y1 == 4 && chessPieceArray[x1][y1-1].get_pieceType() == '*' && chessPieceArray[x1][y1-2].get_pieceType() == '*'&& chessPieceArray[x1][y1-3].get_pieceType() == '*' && chessPieceArray[x1][y1-4].get_pieceType() == 'r')
 			{
-				moves << x1 << y1 << 0 << 2 << '%'; //% will flag that it is a castle
+				moves << x1 << y1 << 0 << 1 << '%'; //% will flag that it is a castle
 			}
 		}
 
@@ -491,7 +484,6 @@ Pawn::Pawn(char pieceColor) {
 
 string Pawn::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 {
-	cout << "Pawn moves" << endl;
 	stringstream moves;
 	if (pieceColor == 'w')
 	{

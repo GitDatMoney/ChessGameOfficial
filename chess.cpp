@@ -132,6 +132,7 @@ bool chess::move(int x1, int y1, int x2, int y2, char c)
   chessPieceArray[x1][y1] = NullPiece('*');
   if (c == 'w')
   {
+
     this->getAllMoves('b');
     if (this->blackMoves.find('o') != string::npos)
     {
@@ -143,6 +144,7 @@ bool chess::move(int x1, int y1, int x2, int y2, char c)
     }
   }
   else{
+
      this->getAllMoves('w');
     if (this->whiteMoves.find('o') != string::npos)
     {

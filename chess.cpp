@@ -147,11 +147,12 @@ bool chess::move(int x1, int y1, int x2, int y2, char c)
     }
   }
   else{
-    this->getWhiteMoves();
+	this->getAllMoves('w');
     if (this->whiteMoves.find('o') != string::npos)
     {
       chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
       chessPieceArray[x2][y2] = temp;
+	  this->getAllMoves('w');
       return false;
     }
   }

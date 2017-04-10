@@ -62,10 +62,6 @@ void chess::setupBoard() {
   chessPieceArray[7][5] = Bishop('w');
   chessPieceArray[7][6] = Knight('w');
   chessPieceArray[7][7] = Rook('w');
-
-  //Draw the Board to Console
-
-  printBoard();
 }
 
 

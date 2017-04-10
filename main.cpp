@@ -5,12 +5,14 @@
 #include <exception>
 #include <iostream>
 #include "chessGui.cpp"
+#include "CustomMatch.cpp"
 using namespace std;
 
 
 // this is called when the user selects option 3 (tutorials) in the main menu
 
 
+void generateCustomMatch(int userInput);
 
 int main() {
 	ChessGUI theGui;
@@ -24,7 +26,10 @@ int main() {
 		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Options\n5) Exit" << endl;
 		cin >> selection;
 		int x1,x2,y1,y2;
+		int userInput = 0;
+		int numCustomMatchLoops = 0;
 		char x1C, x2C;
+		CustomMatch customMatch;
     string tempX1, tempX2;
 		switch(selection) {
 			case 1:
@@ -235,9 +240,27 @@ int main() {
 			break;
 
 			case 2:
+					customMatch.printCustomMatchMenu();
+					cin >> userInput;
+					while(cin.fail() || userInput < 1 || userInput > 4)
+					{
+						if(cin.fail())
+						{
+							cout << "Bruh, learn how to read... clearly you need to enter a number: " << endl;
+						}
+						else {
+							cout <<"Number entered is not in range 1 to 4. Enter a new value: ";
+						}
+						cin.clear();
+						cin.ignore(1000,'\n');
+
+						cin >> userInput;
+					}
+					customMatch.generateCustomMatch(userInput);
 			break;
 
 			case 3:
+
 			    tutorials();
 			break;
 
@@ -259,4 +282,7 @@ int main() {
 
 
 	return 0;
+}
+void generateCustomMatch(int userInput) {
+
 }

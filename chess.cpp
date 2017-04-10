@@ -136,12 +136,13 @@ bool chess::move(int x1, int y1, int x2, int y2, char c)
   chessPieceArray[x1][y1] = NullPiece('*');
   if (c == 'w')
   {
-    this->getBlackMoves();
+	this->getAllMoves('b');
     if (this->blackMoves.find('o') != string::npos)
     {
       cout << "Puts King in danger" << endl;
       chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
       chessPieceArray[x2][y2] = temp;
+	  this->getAllMoves('b');
       return false;
     }
   }

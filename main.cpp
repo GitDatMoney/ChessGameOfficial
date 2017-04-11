@@ -1,11 +1,7 @@
 
 //main.cpp
 //Chess Initial Files
-#include "chess.cpp"
-#include <exception>
-#include <iostream>
-#include "chessGui.cpp"
-#include "CustomMatch.cpp"
+#include "main.h"
 using namespace std;
 
 

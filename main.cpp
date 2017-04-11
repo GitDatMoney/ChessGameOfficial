@@ -4,11 +4,7 @@
 #include "main.h"
 using namespace std;
 
-
 // this is called when the user selects option 3 (tutorials) in the main menu
-
-
-void generateCustomMatch(int userInput);
 
 int main() {
 	ChessGUI theGui;
@@ -300,6 +296,6 @@ int userInputInt() {
 		inputI = stoi(inputS,nullptr,0);
 	} catch(...) {
 		return 0;
-	}	
+	}
 	return inputI;
 }

@@ -67,62 +67,62 @@ void chess::setupBoard() {
 
 void chess::getAllMoves(char color)
 {
-string moves = "";
-for (int i = 0; i < 8; i++)
-{
-  for (int j = 0; j < 8; j++)
+  string moves = "";
+  for (int i = 0; i < 8; i++)
   {
-    if (chessPieceArray[i][j].get_pieceColor() == color)
+    for (int j = 0; j < 8; j++)
     {
-      moves.append(chessPieceArray[i][j].getMoves(i,j,chessPieceArray));
+      if (chessPieceArray[i][j].get_pieceColor() == color)
+      {
+        moves.append(chessPieceArray[i][j].getMoves(i,j,chessPieceArray));
+      }
     }
   }
-}
-if (color == 'w')
-{
-  this->whiteMoves = moves;
-}
-else
-{
-  this->blackMoves = moves;
-}
-}
-
-string chess::getWhiteMoves()
-{
-return this->whiteMoves;
-}
-
-string chess::getBlackMoves()
-{
-  return this->blackMoves;
-}
-
-char chess::searchForMove(int x1, int y1, int x2, int y2, char c)
-{
-  stringstream s;
-  s << x1 << y1 << x2 << y2;
-  string pMove = s.str();
-  if(c == 'w')
+  if (color == 'w')
   {
-    bool exists = this->whiteMoves.find(pMove) != string::npos;
-	if (whiteMoves.at(whiteMoves.find(pMove) + 4) == '%')
-	{
-		return '%';
-	}
-	else if(exists){return 't';}
-	else{return 'f';}
+    this->whiteMoves = moves;
   }
   else
   {
-    bool exists = this->blackMoves.find(pMove) != string::npos;
-	if (blackMoves.at(blackMoves.find(pMove) + 4) == '%')
-	{
-		return '%';
-	}
-    else if(exists){return 't';}
-	else{return 'f';}
+    this->blackMoves = moves;
   }
+  }
+
+  string chess::getWhiteMoves()
+  {
+  return this->whiteMoves;
+  }
+
+  string chess::getBlackMoves()
+  {
+    return this->blackMoves;
+  }
+
+  char chess::searchForMove(int x1, int y1, int x2, int y2, char c)
+  {
+    stringstream s;
+    s << x1 << y1 << x2 << y2;
+    string pMove = s.str();
+    if(c == 'w')
+    {
+      bool exists = this->whiteMoves.find(pMove) != string::npos;
+  	if (whiteMoves.at(whiteMoves.find(pMove) + 4) == '%')
+  	{
+  		return '%';
+  	}
+  	else if(exists){return 't';}
+  	else{return 'f';}
+    }
+    else
+    {
+      bool exists = this->blackMoves.find(pMove) != string::npos;
+  	if (blackMoves.at(blackMoves.find(pMove) + 4) == '%')
+  	{
+  		return '%';
+  	}
+      else if(exists){return 't';}
+  	else{return 'f';}
+    }
 }
 
 bool chess::move(int x1, int y1, int x2, int y2, char c)
@@ -167,4 +167,61 @@ void chess::printBoard()
            }
            cout << "\n" << endl;
      }
+}
+
+void chess::setupRandomBoard() {
+
+  int color = 0;
+
+  for(int ii=0; ii < 32; ii++) {
+    int rowNum = rand() % 8;
+    int colNum = rand() % 8;
+    int pieceType = rand() % 6;
+
+    if(color % 2 == 0) {
+      switch(pieceType) {
+        case 1:
+          chessPieceArray[colNum][rowNum] = Knight('w');
+        break;
+        case 2:
+          chessPieceArray[colNum][rowNum] = Rook('w');
+        break;
+        case 3:
+          chessPieceArray[colNum][rowNum] = Queen('w');
+        break;
+        case 4:
+          chessPieceArray[colNum][rowNum] = King('w');
+        break;
+        case 5:
+          chessPieceArray[colNum][rowNum] = Bishop('w');
+        break;
+        default:
+          chessPieceArray[colNum][rowNum] = Pawn('w');
+        break;
+      }
+    }
+    else {
+      switch(pieceType) {
+        case 1:
+          chessPieceArray[colNum][rowNum] = Knight('b');
+        break;
+        case 2:
+          chessPieceArray[colNum][rowNum] = Rook('b');
+        break;
+        case 3:
+          chessPieceArray[colNum][rowNum] = Queen('b');
+        break;
+        case 4:
+          chessPieceArray[colNum][rowNum] = King('b');
+        break;
+        case 5:
+          chessPieceArray[colNum][rowNum] = Bishop('b');
+        break;
+        default:
+          chessPieceArray[colNum][rowNum] = Pawn('b');
+        break;
+      }
+    }
+    color++;
+  }
 }

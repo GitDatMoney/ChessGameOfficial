@@ -1,18 +1,10 @@
 
 //main.cpp
 //Chess Initial Files
-#include "chess.cpp"
-#include <exception>
-#include <iostream>
-#include "chessGui.cpp"
-#include "CustomMatch.cpp"
+#include "main.h"
 using namespace std;
 
-
 // this is called when the user selects option 3 (tutorials) in the main menu
-
-
-void generateCustomMatch(int userInput);
 
 int main() {
 	ChessGUI theGui;
@@ -285,4 +277,25 @@ int main() {
 }
 void generateCustomMatch(int userInput) {
 
+}
+
+void clearCin() {
+	cin.ignore(100000, '\n');
+}
+
+//Takes in user input inside of the function, attempts to convert the string into an int, and returns the int if successful. If the input
+//was not of type int, an exception is thrown and caught in the method that called userInputInt()
+int userInputInt() {
+	string inputS;
+	int inputI = 0;
+	cin >> inputS;
+	cout << endl;
+
+	//Converts the character array into an int, throwing an exception if it wasn't able to
+	try {
+		inputI = stoi(inputS,nullptr,0);
+	} catch(...) {
+		return 0;
+	}
+	return inputI;
 }

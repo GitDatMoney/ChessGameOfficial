@@ -256,6 +256,7 @@ int main() {
 					cout << "Generating Match" << endl;
 					switch (userInput) {
 						case 1:
+						customMatch.beginTimedMatch();
 						break;
 						case 2:
 						cout << "\n\nGenerating Random Board...\n\n";

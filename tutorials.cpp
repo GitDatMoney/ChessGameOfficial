@@ -21,6 +21,9 @@ void tutorials ()
   string initRow;
   string finCol;
   string finRow;
+  int col1 = (int)'D' - 64;
+  int row1 = 6;
+  int row2 = 5;
 
   // ChessGUI tutGui;
   // chess* tutBoard = new chess();
@@ -186,10 +189,15 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
       cout << "Great job, you were successful! The board will reftesh to reflect your changes!" << endl;
       msleep(2000);
 
+
+
+
+
     //  tutBoard->move(0,0,0,2,'w');
 
     // MUST FIRGURE OUT HOW TO JUST GET THAT PIECE TO MOVE
     //CALL JONAH
+      tutBoard->move(row1,col1-1,row2,col1-1,'w');
       tutGui.printChessGUI(tutBoard->getBoard());
 
       cout << "You have completed the begginer level tutorial!" << endl;

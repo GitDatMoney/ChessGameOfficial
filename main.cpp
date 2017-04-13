@@ -3,6 +3,8 @@
 //Chess Initial Files
 #include "main.h"
 using namespace std;
+// #include <iostream>
+#include <string>
 
 // this is called when the user selects option 3 (tutorials) in the main menu
 

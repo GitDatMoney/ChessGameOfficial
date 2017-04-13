@@ -4,8 +4,6 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "tutorials.h"
-#include "tutorials.cpp"
 #include "chessPiece.cpp"
 
 using namespace std;

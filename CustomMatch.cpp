@@ -10,22 +10,10 @@ CustomMatch::CustomMatch() {
 void CustomMatch::printCustomMatchMenu() {
   cout << "\nPlease Select a Menu Option \n" << endl;
   cout << "1) Timed Match" << endl;
-  cout << "2) Load Saved Game" << endl;
-  cout << "3) Start From a Random Setup" << endl;
-}
-void CustomMatch::generateCustomMatch(int userInput) {
-  switch (userInput){
-    case 1:
-          this->beginTimedMatch();
-      break;
-    case 2:
-      break;
-    default:
-      break;
-  }
+  cout << "2) Start From a Random Setup" << endl;
 }
 
-  void CustomMatch::beginTimedMatch() {
+void CustomMatch::beginTimedMatch() {
     int mode;
     double wTime;
     double bTime;

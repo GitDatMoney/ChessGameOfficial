@@ -17,13 +17,21 @@ int msleep(unsigned long milisec)
 
 void tutorials ()
 {
+  string initCol;
+  string initRow;
+  string finCol;
+  string finRow;
+  int col1 = (int)'D' - 64;
+  int row1 = 6;
+  int row2 = 5;
 
   // ChessGUI tutGui;
   // chess* tutBoard = new chess();
 
 
 
-
+  ChessGUI tutGui;
+  chess* tutBoard = new chess();
 
 
 
@@ -106,12 +114,96 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
         msleep(1200);
         cout << "\t\t\t\t\t Great, lets get started!" << endl;
         msleep(3000);
-        cout << " After selecting quick play, you will be greeted with a chess board that looks like this: " << endl;
+        cout << " \t\tAfter selecting quick play, you will be greeted with a chess board that looks like this: " << endl;
         msleep(2600);
 
         // tutBoard->setupBoard();
         // tutGui.printChessGUI(tutBoard->getBoard());
+
+        tutBoard->setupBoard();
+        tutGui.printChessGUI(tutBoard->getBoard());
+
         msleep(3000);
+
+        cout << "\tYou will start as the white player, indicated by the letter w before the letter that denotes the piece being used." << endl;
+        msleep(2500);
+        cout << "\t\t\t\t\tFor example: " << endl;
+        msleep(1500);
+        cout << "\t\t\t\t\twp = white pawn" << endl;
+        msleep(1500);
+        cout << "\t\t\t\t\twb = white bishop" << endl;
+        msleep(1500);
+        cout << "\t\tThe only tricky one is wo, which is the white king. We had to use wk to represent the white knight" << endl;
+        msleep(5500);
+        cout << endl;
+
+        cout << "\tIn order to actually play, the program will ask you to first input the column on which the piece you want to move resides." << endl;
+        msleep(5000);
+        cout << endl;
+        cout << "\t\t\tThis is an alphabetical letter between A and H inclusive." << endl;
+        msleep(4000);
+        cout << endl;
+        cout << "\t\t it will then ask you to input the corresponding row, which is a number between 1 and 8 inclusive" << endl;
+        msleep(5000);
+        cout << endl;
+        cout << "\tFinally, you will have to enter the destination of the piece you want to move, which will follow the same format." << endl;
+        msleep(5000);
+        cout << endl;
+        cout << "\t\t\t  Lets try this now, by moving a pawn " << endl;
+        msleep(3500);
+        cout << endl;
+        cout << "\tYou may not know how specific pieces move yet, but a pawn is able to move one unit forward, so long as it is not blocked by another piece." << endl;
+        msleep(5500);
+        cout << endl;
+        cout << "\t\tWithout further ado, allow me to present the board once again, and you try moving the pawn at D7 to D6" << endl;
+        msleep(5000);
+        cout << endl;
+
+        tutGui.printChessGUI(tutBoard->getBoard());
+
+        msleep(1500);
+
+      while (initCol != "D" || initRow != "7" || finCol != "D" || finRow != "6")
+      {
+        cout << "White's turn" << endl;
+        msleep(1000);
+        cout << "Inital Column: ";
+        cin >> initCol;
+        cout << "Inital Row: ";
+        cin >> initRow;
+        cout << "Ending Column: ";
+        cin >> finCol;
+        cout << "Ending Row: ";
+        cin >> finRow;
+
+         if(initCol != "D" || initRow != "7" || finCol != "D" || finRow != "6")
+         {
+           msleep(1500);
+           cout << "Try again buddy, move the pawn from D7 to D6" << endl;
+           msleep(1500);
+         }
+
+      }
+
+      msleep(1500);
+      cout << "Great job, you were successful! The board will reftesh to reflect your changes!" << endl;
+      msleep(2000);
+
+
+
+
+
+    //  tutBoard->move(0,0,0,2,'w');
+
+    // MUST FIRGURE OUT HOW TO JUST GET THAT PIECE TO MOVE
+    //CALL JONAH
+      tutBoard->move(row1,col1-1,row2,col1-1,'w');
+      tutGui.printChessGUI(tutBoard->getBoard());
+
+      cout << "You have completed the begginer level tutorial!" << endl;
+      cout << "Move on to the intermediate level tutorial to learn how all the pieces move." << endl;
+      msleep(5000);
+
 
 
 

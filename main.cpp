@@ -3,6 +3,8 @@
 //Chess Initial Files
 #include "main.h"
 using namespace std;
+// #include <iostream>
+#include <string>
 
 // this is called when the user selects option 3 (tutorials) in the main menu
 
@@ -42,8 +44,6 @@ int main() {
 
             x1C = tempX1[0];
 
-            //checkCol(x1C);
-            //checkCol(x1C);
 						x1 = (int)x1C - 64;  //Converts character to int, need to add bound checking mechanism and make it case insensitive
 
 						cout << "Inital Row: ";
@@ -75,6 +75,11 @@ int main() {
 
 						cout << "Ending Row: ";
 						cin >> y2;
+
+
+
+
+
             while(cin.fail() || y2 < 1 || y2 > 8)
             {
               if(cin.fail())

@@ -87,6 +87,18 @@ void chess::getAllMoves(char color)
     this->blackMoves = moves;
   }
   }
+  
+  string chess::getColorMoves(char c)
+  {
+	  if (c=='w')
+	  {
+		  return this->whiteMoves;
+	  }
+	  else
+	  {
+		  return this->blackMoves;
+	  }
+  }
 
   string chess::getWhiteMoves()
   {
@@ -125,34 +137,48 @@ void chess::getAllMoves(char color)
     }
 }
 
+bool chess::checkForCheck(int x1, int y1, int x2, int y2, char c)
+{
+	chessPiece temp = chessPieceArray[x2][y2];
+	chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
+	chessPieceArray[x1][y1] = NullPiece('*');
+	char opColor;
+	if (c == 'w')
+	{
+		opColor = 'b';
+	}
+	else
+	{
+		opColor = 'w';
+	}
+	this->getAllMoves(opColor);
+	if (this->getColorMoves(opColor).find('o') != string::npos)
+	{
+		chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = temp;
+		this->getAllMoves(opColor);
+		return true;
+	}
+	else
+	{
+		chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = temp;
+		this->getAllMoves(opColor);
+		return false;
+	}
+}
+
 bool chess::move(int x1, int y1, int x2, int y2, char c)
 {
-  chessPiece temp = chessPieceArray[x2][y2];
-  chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
-  chessPieceArray[x1][y1] = NullPiece('*');
-  if (c == 'w')
-  {
 
-    this->getAllMoves('b');
-    if (this->blackMoves.find('o') != string::npos)
-    {
-      cout << "Puts King in danger" << endl;
-      chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
-      chessPieceArray[x2][y2] = temp;
-	  this->getAllMoves('b');
-      return false;
-    }
+  if (checkForCheck(x1,y1,x2,y2,c))
+  {
+	  return false;
   }
   else{
-
-     this->getAllMoves('w');
-    if (this->whiteMoves.find('o') != string::npos)
-    {
-      chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
-      chessPieceArray[x2][y2] = temp;
-	  this->getAllMoves('w');
-      return false;
-    }
+		chessPiece temp = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
+		chessPieceArray[x1][y1] = NullPiece('*');
   }
   return true;
 }
@@ -224,4 +250,27 @@ void chess::setupRandomBoard() {
     }
     color++;
   }
+}
+
+bool chess::checkForCheckmate(char c)
+{
+	string potMoves;
+	char opColor;
+	if (c == 'w')
+	{
+		opColor = 'b';
+	}
+	else
+	{
+		opColor = 'w';
+	}
+	potMoves = this->getColorMoves(c);
+	for (int i = 0; i<potMoves.size()/5; i+=5)
+	{
+		if (!this->checkForCheck(potMoves.at(i)-'0',potMoves.at(i+1)-'0',potMoves.at(i+2)-'0',potMoves.at(i+3)-'0',c));
+		{
+			return false;
+		}
+	}
+	return true;
 }

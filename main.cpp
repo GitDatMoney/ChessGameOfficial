@@ -35,6 +35,11 @@ int main() {
 					theBoard->getAllMoves('w');
 					bool gettingMove = true;
 					cout << "White's turn" << endl;
+					if (theBoard->checkForCheckmate('w'))
+					{
+						cout << "White is in checkmate, black wins!" << endl;
+						return 0;
+					}
 					while(gettingMove)
 					{
 						cout << "Inital Column: ";
@@ -135,6 +140,11 @@ int main() {
 					}
 					gettingMove = true;
 					cout << "Black's turn" << endl;
+					if (theBoard->checkForCheckmate('w'))
+					{
+						cout << "White is in checkmate, black wins!" << endl;
+						return 0;
+					}
 					theBoard->getAllMoves('b');
           while(gettingMove)
 					{
@@ -239,14 +249,14 @@ int main() {
 			case 2:
 					customMatch.printCustomMatchMenu();
 					cin >> userInput;
-					while(cin.fail() || userInput < 1 || userInput > 4)
+					while(cin.fail() || userInput < 1 || userInput > 2)
 					{
 						if(cin.fail())
 						{
 							cout << "Bruh, learn how to read... clearly you need to enter a number: " << endl;
 						}
 						else {
-							cout <<"Number entered is not in range 1 to 4. Enter a new value: ";
+							cout <<"Number entered is not in range 1 to 2. Enter a new value: ";
 						}
 						cin.clear();
 						cin.ignore(1000,'\n');

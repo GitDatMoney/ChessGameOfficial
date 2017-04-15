@@ -12,4 +12,5 @@ public:
   void printCustomMatchMenu();
   void generateCustomMatch(int userInput);
   void beginTimedMatch();
+  string secondsToTime(int seconds);
 };

@@ -124,6 +124,7 @@ for (int i = 0; i < 8; i++)
       moves.append(chessPieceArray[i][j].getMoves(i,j,chessPieceArray));
     }
   }
+
 }
 if (color == 'w')
 {
@@ -134,6 +135,29 @@ else
   this->blackMoves = moves;
 }
 }
+
+  if (color == 'w')
+  {
+    this->whiteMoves = moves;
+  }
+  else
+  {
+    this->blackMoves = moves;
+  }
+  }
+  
+  string chess::getColorMoves(char c)
+  {
+	  if (c=='w')
+	  {
+		  return this->whiteMoves;
+	  }
+	  else
+	  {
+		  return this->blackMoves;
+	  }
+  }
+
 
 string chess::getWhiteMoves()
 {
@@ -172,34 +196,48 @@ char chess::searchForMove(int x1, int y1, int x2, int y2, char c)
   }
 }
 
+bool chess::checkForCheck(int x1, int y1, int x2, int y2, char c)
+{
+	chessPiece temp = chessPieceArray[x2][y2];
+	chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
+	chessPieceArray[x1][y1] = NullPiece('*');
+	char opColor;
+	if (c == 'w')
+	{
+		opColor = 'b';
+	}
+	else
+	{
+		opColor = 'w';
+	}
+	this->getAllMoves(opColor);
+	if (this->getColorMoves(opColor).find('o') != string::npos)
+	{
+		chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = temp;
+		this->getAllMoves(opColor);
+		return true;
+	}
+	else
+	{
+		chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = temp;
+		this->getAllMoves(opColor);
+		return false;
+	}
+}
+
 bool chess::move(int x1, int y1, int x2, int y2, char c)
 {
-  chessPiece temp = chessPieceArray[x2][y2];
-  chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
-  chessPieceArray[x1][y1] = NullPiece('*');
-  if (c == 'w')
-  {
 
-    this->getAllMoves('b');
-    if (this->blackMoves.find('o') != string::npos)
-    {
-      cout << "Puts King in danger" << endl;
-      chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
-      chessPieceArray[x2][y2] = temp;
-	  this->getAllMoves('b');
-      return false;
-    }
+  if (checkForCheck(x1,y1,x2,y2,c))
+  {
+	  return false;
   }
   else{
-
-     this->getAllMoves('w');
-    if (this->whiteMoves.find('o') != string::npos)
-    {
-      chessPieceArray[x1][y1] = chessPieceArray[x2][y2];
-      chessPieceArray[x2][y2] = temp;
-	  this->getAllMoves('w');
-      return false;
-    }
+		chessPiece temp = chessPieceArray[x2][y2];
+		chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
+		chessPieceArray[x1][y1] = NullPiece('*');
   }
   return true;
 }
@@ -215,3 +253,85 @@ void chess::printBoard()
            cout << "\n" << endl;
      }
 }
+
+
+void chess::setupRandomBoard() {
+
+  int color = 0;
+
+  for(int ii=0; ii < 32; ii++) {
+    int rowNum = rand() % 8;
+    int colNum = rand() % 8;
+    int pieceType = rand() % 6;
+
+    if(color % 2 == 0) {
+      switch(pieceType) {
+        case 1:
+          chessPieceArray[colNum][rowNum] = Knight('w');
+        break;
+        case 2:
+          chessPieceArray[colNum][rowNum] = Rook('w');
+        break;
+        case 3:
+          chessPieceArray[colNum][rowNum] = Queen('w');
+        break;
+        case 4:
+          chessPieceArray[colNum][rowNum] = King('w');
+        break;
+        case 5:
+          chessPieceArray[colNum][rowNum] = Bishop('w');
+        break;
+        default:
+          chessPieceArray[colNum][rowNum] = Pawn('w');
+        break;
+      }
+    }
+    else {
+      switch(pieceType) {
+        case 1:
+          chessPieceArray[colNum][rowNum] = Knight('b');
+        break;
+        case 2:
+          chessPieceArray[colNum][rowNum] = Rook('b');
+        break;
+        case 3:
+          chessPieceArray[colNum][rowNum] = Queen('b');
+        break;
+        case 4:
+          chessPieceArray[colNum][rowNum] = King('b');
+        break;
+        case 5:
+          chessPieceArray[colNum][rowNum] = Bishop('b');
+        break;
+        default:
+          chessPieceArray[colNum][rowNum] = Pawn('b');
+        break;
+      }
+    }
+    color++;
+  }
+}
+
+bool chess::checkForCheckmate(char c)
+{
+	string potMoves;
+	char opColor;
+	if (c == 'w')
+	{
+		opColor = 'b';
+	}
+	else
+	{
+		opColor = 'w';
+	}
+	potMoves = this->getColorMoves(c);
+	for (int i = 0; i<potMoves.size()/5; i+=5)
+	{
+		if (!this->checkForCheck(potMoves.at(i)-'0',potMoves.at(i+1)-'0',potMoves.at(i+2)-'0',potMoves.at(i+3)-'0',c));
+		{
+			return false;
+		}
+	}
+	return true;
+}
+

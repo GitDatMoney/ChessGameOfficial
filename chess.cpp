@@ -64,20 +64,78 @@ void chess::setupBoard() {
   chessPieceArray[7][7] = Rook('w');
 }
 
-
-void chess::getAllMoves(char color)
-{
-  string moves = "";
-  for (int i = 0; i < 8; i++)
-  {
-    for (int j = 0; j < 8; j++)
-    {
-      if (chessPieceArray[i][j].get_pieceColor() == color)
-      {
-        moves.append(chessPieceArray[i][j].getMoves(i,j,chessPieceArray));
+void chess::setupCustomBoard(int inputArray[8][8]) {
+  //takes a 2d char array input, capital letters are black pieces and lowercase are white, * is NullPiece and the letter O/o is king
+  for(int i=0; i < 8; i++){
+    for(int j=0; j < 8; j++){
+      if(inputArray[i][j] == 'P'){
+        chessPieceArray[i][j] = Pawn('b');
+      }
+      else if(inputArray[i][j] == 'p'){
+        chessPieceArray[i][j] = Pawn('w');
+      }
+      else if(inputArray[i][j] == '*'){
+        chessPieceArray[i][j] = NullPiece('*');
+      }
+      else if(inputArray[i][j] == 'R'){
+        chessPieceArray[i][j] = Rook('b');
+      }
+      else if(inputArray[i][j] == 'K'){
+        chessPieceArray[i][j] = Knight('b');
+      }
+      else if(inputArray[i][j] == 'B'){
+        chessPieceArray[i][j] = Bishop('b');
+      }
+      else if(inputArray[i][j] == 'Q'){
+        chessPieceArray[i][j] = Queen('b');
+      }
+      else if(inputArray[i][j] == 'O'){
+        chessPieceArray[i][j] = King('b');
+      }
+      else if(inputArray[i][j] == 'r'){
+        chessPieceArray[i][j] = Rook('w');
+      }
+      else if(inputArray[i][j] == 'k'){
+        chessPieceArray[i][j] = Knight('w');
+      }
+      else if(inputArray[i][j] == 'b'){
+        chessPieceArray[i][j] = Bishop('w');
+      }
+      else if(inputArray[i][j] == 'q'){
+        chessPieceArray[i][j] = Queen('w');
+      }
+      else if(inputArray[i][j] == 'o'){
+        chessPieceArray[i][j] = King('w');
       }
     }
   }
+}
+
+
+void chess::getAllMoves(char color)
+{
+string moves = "";
+for (int i = 0; i < 8; i++)
+{
+  for (int j = 0; j < 8; j++)
+  {
+    if (chessPieceArray[i][j].get_pieceColor() == color)
+    {
+      moves.append(chessPieceArray[i][j].getMoves(i,j,chessPieceArray));
+    }
+  }
+
+}
+if (color == 'w')
+{
+  this->whiteMoves = moves;
+}
+else
+{
+  this->blackMoves = moves;
+}
+}
+
   if (color == 'w')
   {
     this->whiteMoves = moves;
@@ -100,41 +158,42 @@ void chess::getAllMoves(char color)
 	  }
   }
 
-  string chess::getWhiteMoves()
-  {
-  return this->whiteMoves;
-  }
 
-  string chess::getBlackMoves()
-  {
-    return this->blackMoves;
-  }
+string chess::getWhiteMoves()
+{
+return this->whiteMoves;
+}
 
-  char chess::searchForMove(int x1, int y1, int x2, int y2, char c)
+string chess::getBlackMoves()
+{
+  return this->blackMoves;
+}
+
+char chess::searchForMove(int x1, int y1, int x2, int y2, char c)
+{
+  stringstream s;
+  s << x1 << y1 << x2 << y2;
+  string pMove = s.str();
+  if(c == 'w')
   {
-    stringstream s;
-    s << x1 << y1 << x2 << y2;
-    string pMove = s.str();
-    if(c == 'w')
-    {
-      bool exists = this->whiteMoves.find(pMove) != string::npos;
-  	if (whiteMoves.at(whiteMoves.find(pMove) + 4) == '%')
-  	{
-  		return '%';
-  	}
-  	else if(exists){return 't';}
-  	else{return 'f';}
-    }
-    else
-    {
-      bool exists = this->blackMoves.find(pMove) != string::npos;
-  	if (blackMoves.at(blackMoves.find(pMove) + 4) == '%')
-  	{
-  		return '%';
-  	}
-      else if(exists){return 't';}
-  	else{return 'f';}
-    }
+    bool exists = this->whiteMoves.find(pMove) != string::npos;
+	if (whiteMoves.at(whiteMoves.find(pMove) + 4) == '%')
+	{
+		return '%';
+	}
+	else if(exists){return 't';}
+	else{return 'f';}
+  }
+  else
+  {
+    bool exists = this->blackMoves.find(pMove) != string::npos;
+	if (blackMoves.at(blackMoves.find(pMove) + 4) == '%')
+	{
+		return '%';
+	}
+    else if(exists){return 't';}
+	else{return 'f';}
+  }
 }
 
 bool chess::checkForCheck(int x1, int y1, int x2, int y2, char c)
@@ -194,6 +253,7 @@ void chess::printBoard()
            cout << "\n" << endl;
      }
 }
+
 
 void chess::setupRandomBoard() {
 
@@ -274,3 +334,4 @@ bool chess::checkForCheckmate(char c)
 	}
 	return true;
 }
+

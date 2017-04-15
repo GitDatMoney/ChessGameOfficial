@@ -134,7 +134,6 @@ else
 {
   this->blackMoves = moves;
 }
-}
 
   if (color == 'w')
   {

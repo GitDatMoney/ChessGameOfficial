@@ -11,4 +11,5 @@ public:
   CustomMatch();
   void printCustomMatchMenu();
   void beginTimedMatch();
+  string secondsToTime(int seconds);
 };

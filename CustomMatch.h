@@ -10,5 +10,6 @@ private:
 public:
   CustomMatch();
   void printCustomMatchMenu();
+  void generateCustomMatch(int userInput);
   void beginTimedMatch();
 };

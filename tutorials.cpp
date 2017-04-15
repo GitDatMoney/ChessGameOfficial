@@ -210,7 +210,7 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
         {
           cin.clear();
           cin.ignore(1000,'\n');
-          cout << "Thats not how you select Quick Play, try again newbie" << endl;
+          cout << "Thats not how you select Quick Play, please try again" << endl;
           cin >> quickPlay;
         }
         msleep(1200);
@@ -291,14 +291,6 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
       cout << "Great job, you were successful! The board will refresh to reflect your changes!" << endl;
       msleep(2000);
 
-
-
-
-
-    //  tutBoard->move(0,0,0,2,'w');
-
-    // MUST FIRGURE OUT HOW TO JUST GET THAT PIECE TO MOVE
-    //CALL JONAH
       tutBoard->move(row1,col1-1,row2,col1-1,'w');
       tutGui.printChessGUI(tutBoard->getBoard());
 
@@ -341,7 +333,7 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
         {
           cin.clear();
           cin.ignore(1000,'\n');
-          cout << "Thats not how you select Quick Play, try again newbie" << endl;
+          cout << "Thats not how you select Quick Play, please try again" << endl;
           cin >> quickPlay;
         }
         msleep(1200);
@@ -389,10 +381,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: ";
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -412,18 +404,14 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-
-
-
-
           while(cin.fail() || y2 < 1 || y2 > 8)
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: ";
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -510,10 +498,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -533,7 +521,15 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(x2 != 5 || y2 != 5){
+          while(cin.fail() || x2 != 5 || y2 != 5){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
             if(intBoardPawnCap->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
             {
                 cout << "That move does not capture the bishop, try again by moving the pawn to the space where the bishop is." << endl;
@@ -556,10 +552,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -657,10 +653,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -680,7 +676,17 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(x2 != 6 || y2 != 2){
+
+          while(cin.fail() || x2 != 6 || y2 != 2){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
+
             if(intBoardRook->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
             {
                 cout << "That move does not capture the pawn, try again by moving the rook to the space where the pawn is." << endl;
@@ -703,10 +709,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -800,10 +806,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -823,7 +829,18 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(x2 != 1 || y2 != 6){
+
+
+          while(cin.fail() || x2 != 1 || y2 != 6){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
+
             if(intBoardBishop->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
             {
                 cout << "That move does not capture the knight, try again by moving the bishop to the space where the knight is." << endl;
@@ -846,10 +863,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -952,10 +969,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -975,12 +992,30 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(!((x2 == 4 && y2 == 3) || (x2 == 3 && y2 == 4) || (x2 == 3 && y2 == 6) || (x2 == 4 && y2 == 7) || (x2 == 6 && y2 == 3) || (x2 == 7 && y2 == 4) || (x2 == 7 && y2 == 6) || (x2 == 6 && y2 == 7))){
-            cout << "That's not a legal move. The knight can move two squares in one direction, then one square perpendicular to that movement. Try again." << endl;
-            cout << "Ending Column: ";
-            cin >> tempX2;
-            checkCols(tempX2);
-            x2C = tempX2[0];
+          while(cin.fail() || !((x2 == 4 && y2 == 3) || (x2 == 3 && y2 == 4) || (x2 == 3 && y2 == 6) || (x2 == 4 && y2 == 7) || (x2 == 6 && y2 == 3) || (x2 == 7 && y2 == 4) || (x2 == 7 && y2 == 6) || (x2 == 6 && y2 == 7))){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
+
+
+            if(intBoardKnight->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
+            {
+                cout << "That move does not capture a pawn. Please try again." << endl;
+            }
+            else{
+                cout << "That's not a legal move for the knight. The knight can move two squares in one direction, then one square perpendicular to that movement. Please try again." << endl;
+            }
+
+              cout << "Ending Column: ";
+              cin >> tempX2;
+              checkCols(tempX2);
+              x2C = tempX2[0];
+
 
             x2 = (int)x2C - 64;
 
@@ -992,10 +1027,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1104,10 +1139,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1127,7 +1162,16 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(!((x2 == 1 && y2 == 2) || (x2 == 4 && y2 == 5) || (x2 == 4 && y2 == 7) || (x2 == 6 && y2 == 2) || (x2 == 6 && y2 == 4))){
+          while(cin.fail() || !((x2 == 1 && y2 == 2) || (x2 == 4 && y2 == 5) || (x2 == 4 && y2 == 7) || (x2 == 6 && y2 == 2) || (x2 == 6 && y2 == 4))){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
+
             if(intBoardQueen->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
             {
                 cout << "That move does not put the king in check, try again by moving the queen so that it could capture the king on its next turn." << endl;
@@ -1150,10 +1194,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1243,10 +1287,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1266,7 +1310,16 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(!((x2 == 4 && y2 == 8) || (x2 == 6 && y2 == 7))){
+          while(cin.fail() || !((x2 == 4 && y2 == 8) || (x2 == 6 && y2 == 7))){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
+
             if(intBoardKing->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
             {
                 cout << "That move does not get the king out of check, try again by moving the king so that it cannot be captured by any black piece on its next turn." << endl;
@@ -1289,10 +1342,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1385,10 +1438,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1408,7 +1461,16 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(!((x2 == 7 && y2 == 8) || (x2 == 3 && y2 == 8))){
+          while(cin.fail() || !((x2 == 7 && y2 == 8) || (x2 == 3 && y2 == 8))){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
+
             if(intBoardCastle->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
             {
                 cout << "That move is a legal move but is not a castle, try again by moving the king two spaces to its right or left." << endl;
@@ -1431,10 +1493,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1528,10 +1590,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');
@@ -1551,7 +1613,16 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           cout << "Ending Row: ";
           cin >> y2;
 
-          while(!(x2 == 6 && y2 == 1)){
+          while(cin.fail() || !(x2 == 6 && y2 == 1)){
+
+            if(cin.fail())
+            {
+              cin.clear();
+              cin.ignore(1000,'\n');
+              cout << "Please enter a valid row: ";
+              cin >> y2;
+            }
+
             if(intBoardCheckmate->searchForMove(y1-1,x1-1,y2-1,x2-1,'w')=='t')
             {
                 cout << "That move is a legal move but does not put the king in checkmate, try again by moving the to where the king is in check and cannot escape it." << endl;
@@ -1574,10 +1645,10 @@ cout << "\t  ▄████▀   ████████▀     ▄███�
           {
             if(cin.fail())
             {
-              cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+              cout << "Please enter a valid row: " << endl;
             }
             else {
-              cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+              cout <<"Please enter a valid row: ";
             }
             cin.clear();
             cin.ignore(1000,'\n');

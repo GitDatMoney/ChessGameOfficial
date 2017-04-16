@@ -21,7 +21,6 @@ int main() {
 		cin >> selection;
 		int x1,x2,y1,y2;
 		int userInput = 0;
-		int numCustomMatchLoops = 0;
 		char x1C, x2C;
 		CustomMatch customMatch;
     string tempX1, tempX2;
@@ -58,10 +57,10 @@ int main() {
             {
               if(cin.fail())
               {
-                cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+                cout << "Please enter a valid row number: ";
               }
               else {
-                cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+                cout <<"Please enter a valid row number: ";
               }
               cin.clear();
               cin.ignore(1000,'\n');
@@ -89,10 +88,10 @@ int main() {
             {
               if(cin.fail())
               {
-                cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+                cout << "Please enter a valid row number: ";
               }
               else {
-                cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+                cout <<"Please enter a valid row number: ";
               }
               cin.clear();
               cin.ignore(1000,'\n');
@@ -166,10 +165,10 @@ int main() {
             {
               if(cin.fail())
               {
-                cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+                cout << "Please enter a valid row number: ";
               }
               else {
-                cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+                cout <<"Please enter a valid row number: ";
               }
               cin.clear();
               cin.ignore(1000,'\n');
@@ -192,10 +191,10 @@ int main() {
             {
               if(cin.fail())
               {
-                cout << "Bruh, learn how to chess... the ROW is a NUMBER, please enter a new one: " << endl;
+                cout << "Please enter a valid row number: ";
               }
               else {
-                cout <<"Number entered is not in range 1 to 8. Enter new row value:";
+                cout <<"Please enter a valid row number: ";
               }
               cin.clear();
               cin.ignore(1000,'\n');
@@ -253,7 +252,7 @@ int main() {
 					{
 						if(cin.fail())
 						{
-							cout << "Bruh, learn how to read... clearly you need to enter a number: " << endl;
+							cout << "Please enter a valid menu option: ";
 						}
 						else {
 							cout <<"Number entered is not in range 1 to 2. Enter a new value: ";

@@ -9,8 +9,7 @@ void checkCols(string &tempX1)
 
   while(!(tempX1.compare("A") == 0 || tempX1.compare("B") == 0 || tempX1.compare("C") == 0 || tempX1.compare("D") == 0  || tempX1.compare("E") == 0 || tempX1.compare("F") == 0 || tempX1.compare("G") == 0 || tempX1.compare("H") == 0))
   {
-    cout << "Mah dawg, you think you l33t, well I am LEET3R" << endl;
-    cout << "So plz enter a valid column yo: " ;
+    cout << "Please enter a valid column " ;
     cin >> tempX1;
   }
 
@@ -144,7 +143,7 @@ else
     this->blackMoves = moves;
   }
   }
-  
+
   string chess::getColorMoves(char c)
   {
 	  if (c=='w')
@@ -333,4 +332,3 @@ bool chess::checkForCheckmate(char c)
 	}
 	return true;
 }
-

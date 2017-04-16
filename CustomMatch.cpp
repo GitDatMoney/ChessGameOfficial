@@ -10,8 +10,7 @@ CustomMatch::CustomMatch() {
 void CustomMatch::printCustomMatchMenu() {
   cout << "\nPlease Select a Menu Option \n" << endl;
   cout << "1) Timed Match" << endl;
-  cout << "2) Load Saved Game" << endl;
-  cout << "3) Start From a Random Setup" << endl;
+  cout << "2) Start From a Random Setup" << endl;
 }
 void CustomMatch::generateCustomMatch(int userInput) {
   switch (userInput){
@@ -33,7 +32,7 @@ string CustomMatch::secondsToTime(int seconds)
 	if (seconds > 60)
 	{
 		ss << seconds/60;
-		
+
 		ss << ":";
 		if (seconds%60 < 10)
 		{
@@ -131,7 +130,7 @@ void CustomMatch::beginTimedMatch() {
 
           theGui.printChessGUI(theBoard->getBoard());
 		cout << "White remaining time: " << this->secondsToTime(wTime) << endl;
-		
+
         if(bTime >0)
 		{
 	      cout << "Black remaining time: " << this->secondsToTime(bTime) << endl;
@@ -361,7 +360,7 @@ void CustomMatch::beginTimedMatch() {
           }
           seconds_since_start=difftime(time(0),start);
           bTime-=seconds_since_start;
-        
+
 
 		}
 	}
@@ -640,7 +639,7 @@ void CustomMatch::beginTimedMatch() {
 			}
 			break;
 		}
-		
+
 		case 3:
 	  {
 		  if (totalTime==10800)
@@ -898,7 +897,7 @@ void CustomMatch::beginTimedMatch() {
         }
 
 		  wTime+=seconds_since_start;
-        
+
 		break;
 		}
 	case 4:

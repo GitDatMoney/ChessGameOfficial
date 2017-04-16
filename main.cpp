@@ -10,6 +10,7 @@ using namespace std;
 
 int main() {
 	ChessGUI theGui;
+	theGui.welcomeToChess();
 	int selection = 0;
 	cout << "Welcome To Chess" << endl;
 	chess* theBoard = new chess();

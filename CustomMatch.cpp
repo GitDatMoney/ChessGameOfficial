@@ -7,24 +7,6 @@ using namespace std;
 CustomMatch::CustomMatch() {
 
 }
-void CustomMatch::printCustomMatchMenu() {
-  cout << "\nPlease Select a Menu Option \n" << endl;
-  cout << "1) Timed Match" << endl;
-  cout << "2) Start From a Random Setup" << endl;
-}
-void CustomMatch::generateCustomMatch(int userInput) {
-  switch (userInput){
-    case 1:
-          this->beginTimedMatch();
-      break;
-    case 2:
-      break;
-    default:
-      break;
-  }
-}
-
-
 
 string CustomMatch::secondsToTime(int seconds)
 {

@@ -12,7 +12,6 @@ public:
   void printBorder();
 };
 ChessGUI::ChessGUI() {
-  welcomeToChess();
 }
 void ChessGUI::printChessGUI(chessPiece** myBoardToDraw) {
 

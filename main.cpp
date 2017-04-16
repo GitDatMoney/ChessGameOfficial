@@ -10,6 +10,7 @@ using namespace std;
 
 int main() {
 	ChessGUI theGui;
+	theGui.welcomeToChess();
 	int selection = 0;
 	cout << "Welcome To Chess" << endl;
 	chess* theBoard = new chess();
@@ -20,7 +21,6 @@ int main() {
 		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Options\n5) Exit" << endl;
 		cin >> selection;
 		int x1,x2,y1,y2;
-		int userInput = 0;
 		char x1C, x2C;
 		CustomMatch customMatch;
     string tempX1, tempX2;
@@ -246,23 +246,7 @@ int main() {
 			break;
 
 			case 2:
-					customMatch.printCustomMatchMenu();
-					cin >> userInput;
-					while(cin.fail() || userInput < 1 || userInput > 2)
-					{
-						if(cin.fail())
-						{
-							cout << "Please enter a valid menu option: ";
-						}
-						else {
-							cout <<"Number entered is not in range 1 to 2. Enter a new value: ";
-						}
-						cin.clear();
-						cin.ignore(1000,'\n');
-
-						cin >> userInput;
-					}
-					customMatch.generateCustomMatch(userInput);
+					customMatch.beginTimedMatch();
 			break;
 
 			case 3:

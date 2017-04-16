@@ -7,24 +7,6 @@ using namespace std;
 CustomMatch::CustomMatch() {
 
 }
-void CustomMatch::printCustomMatchMenu() {
-  cout << "\nPlease Select a Menu Option \n" << endl;
-  cout << "1) Timed Match" << endl;
-  cout << "2) Start From a Random Setup" << endl;
-}
-void CustomMatch::generateCustomMatch(int userInput) {
-  switch (userInput){
-    case 1:
-          this->beginTimedMatch();
-      break;
-    case 2:
-      break;
-    default:
-      break;
-  }
-}
-
-
 
 string CustomMatch::secondsToTime(int seconds)
 {
@@ -54,8 +36,6 @@ void CustomMatch::beginTimedMatch() {
     double totalTime;
     string tempX1, tempX2;
     int x1,x2,y1,y2;
-    int userInput = 0;
-    int numCustomMatchLoops = 0;
     char x1C, x2C;
     ChessGUI theGui;
     int timeMode;
@@ -112,23 +92,14 @@ void CustomMatch::beginTimedMatch() {
     {
       case 1:
 	  {
-
         chess* theBoard = new chess();
         theBoard->setupBoard();
         time_t start = time(0);
-        cout << "White remaining time: " << wTime << endl;
-        while(true)
-        {
-          theGui.printChessGUI(theBoard->getBoard());
-          cout << "Black remaining time: " << bTime << endl;
-
-        chess* theBoard = new chess();
-        theBoard->setupBoard();
-        time_t start = time(0);
+		theGui.printChessGUI(theBoard->getBoard());
         while(true)
         {
 
-          theGui.printChessGUI(theBoard->getBoard());
+
 		cout << "White remaining time: " << this->secondsToTime(wTime) << endl;
 
         if(bTime >0)
@@ -363,20 +334,20 @@ void CustomMatch::beginTimedMatch() {
 
 
 		}
+		break;
 	}
-			break;
-	  }
-	      case 2:
+
+	      case 2: //Overtime mode
 		  {
 			chess* theBoard = new chess();
 			theBoard->setupBoard();
 			time_t start = time(0);
 			int bMoves=0;
 			int wMoves=0;
-			int reqTurn;
+			int reqTurn;//sets amounts of turns needed for more time
 			if(totalTime==10800)
 			{
-				reqTurn=60;
+				reqTurn=60; 
 			}
 			else if(totalTime==1800)
 			{
@@ -385,10 +356,9 @@ void CustomMatch::beginTimedMatch() {
 			else{
 				reqTurn=30;
 			}
+			theGui.printChessGUI(theBoard->getBoard());
 			while(true)
 			{
-			  theGui.printChessGUI(theBoard->getBoard());
-
 			cout << "White remaining time: " << this->secondsToTime(wTime) << endl;
 			if(bTime >0)
 			{
@@ -402,7 +372,7 @@ void CustomMatch::beginTimedMatch() {
 			  theBoard->getAllMoves('w');
 			  bool gettingMove = true;
 			  cout << "White's turn" << endl;
-			if (theBoard->checkForCheckmate('w'))
+			if (theBoard->checkForCheckmate('w')) //makes sure not in checkmate at start of each turn
 			{
 				cout << "White is in checkmate, Black wins!" << endl;
 				return;
@@ -415,7 +385,7 @@ void CustomMatch::beginTimedMatch() {
 			  {
 				  cout << "Turns until more time: " << reqTurn-wMoves << endl;
 			  }
-			  wMoves++;
+			  wMoves++; //Gets move, validates input, checks for check
 			  while(gettingMove)
 			  {
 				cout << "Inital Column: ";
@@ -516,6 +486,7 @@ void CustomMatch::beginTimedMatch() {
 					if(wTime >0)
 				{
 				  cout << "White remaining time: " << this->secondsToTime(wTime) << endl;
+				  cout << "Black remaining time: " << this->secondsToTime(bTime) << endl;
 				}
 				else{
 					cout << "White is out of time, Black wins!" << endl;
@@ -548,8 +519,6 @@ void CustomMatch::beginTimedMatch() {
 
 				x1C = tempX1[0];
 
-				//checkCol(x1C);
-				//checkCol(x1C);
 				x1 = (int)x1C - 64;  //Converts character to int, need to add bound checking mechanism and make it case insensitive
 
 				cout << "Inital Row: ";
@@ -656,9 +625,10 @@ void CustomMatch::beginTimedMatch() {
         chess* theBoard = new chess();
         theBoard->setupBoard();
         time_t start = time(0);
+		theGui.printChessGUI(theBoard->getBoard());
+
         while(true)
         {
-          theGui.printChessGUI(theBoard->getBoard());
 			cout << "White remaining time: " << this->secondsToTime(wTime) << endl;
         if(bTime >0)
 		{
@@ -775,12 +745,12 @@ void CustomMatch::beginTimedMatch() {
           }
           seconds_since_start = difftime( time(0), start);
           wTime-=seconds_since_start;
+		  bTime+=seconds_since_start;
 
-          cout << "White remaining time: " << wTime << endl;
-
-          		if(wTime >0)
+			if(wTime >0)
 			{
 			  cout << "White remaining time: " << this->secondsToTime(wTime) << endl;
+			  cout << "Black remaining time: " << this->secondsToTime(bTime) << endl;
 			}
 			else{
 				cout << "White is out of time, Black wins!" << endl;
@@ -893,10 +863,10 @@ void CustomMatch::beginTimedMatch() {
           }
           seconds_since_start=difftime(time(0),start);
           bTime-=seconds_since_start;
-
+		  wTime+=seconds_since_start;
         }
 
-		  wTime+=seconds_since_start;
+
 
 		break;
 		}

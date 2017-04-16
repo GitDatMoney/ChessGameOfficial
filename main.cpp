@@ -18,7 +18,7 @@ int main() {
 
 	while(true) {
 		cout << "Please Select A Menu Option: " << endl;
-		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Options\n5) Exit" << endl;
+		cout << "1) Quick Play\n2) Custom Match\n3) Tutorials\n4) Exit" << endl;
 		cin >> selection;
 		int x1,x2,y1,y2;
 		char x1C, x2C;
@@ -254,12 +254,10 @@ int main() {
 			    tutorials();
 			break;
 
-			case 4:
+			case 4: //Exits the program
+				return(0);
 			break;
 
-			case 5:
-			//Exit the Program
-				return(0);
 			default:
 			//The user entered an invalid option
 			cout << "Invalid Option, Please make a Valid Selection" << endl;

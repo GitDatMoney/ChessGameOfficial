@@ -218,7 +218,7 @@ void CustomMatch::beginTimedMatch() {
                 }
                 else
                 {
-                  theBoard->move(7,0,7,2,'w');
+                  theBoard->move(7,0,7,3,'w');
                   theGui.printChessGUI(theBoard->getBoard());
                   gettingMove = false;
                 }
@@ -333,7 +333,7 @@ void CustomMatch::beginTimedMatch() {
                 }
                 else
                 {
-                  theBoard->move(0,0,0,2,'b');
+                  theBoard->move(0,0,0,3,'b');
                   theGui.printChessGUI(theBoard->getBoard());
                   gettingMove = false;
                 }
@@ -486,7 +486,7 @@ void CustomMatch::beginTimedMatch() {
 					}
 					else
 					{
-					  theBoard->move(7,0,7,2,'w');
+					  theBoard->move(7,0,7,3,'w');
 					  theGui.printChessGUI(theBoard->getBoard());
 					  gettingMove = false;
 					}
@@ -609,7 +609,7 @@ void CustomMatch::beginTimedMatch() {
 					}
 					else
 					{
-					  theBoard->move(0,0,0,2,'b');
+					  theBoard->move(0,0,0,3,'b');
 					  theGui.printChessGUI(theBoard->getBoard());
 					  gettingMove = false;
 					}
@@ -748,7 +748,7 @@ void CustomMatch::beginTimedMatch() {
                 }
                 else
                 {
-                  theBoard->move(7,0,7,2,'w');
+                  theBoard->move(7,0,7,3,'w');
                   theGui.printChessGUI(theBoard->getBoard());
                   gettingMove = false;
                 }
@@ -866,7 +866,7 @@ void CustomMatch::beginTimedMatch() {
                 }
                 else
                 {
-                  theBoard->move(0,0,0,2,'b');
+                  theBoard->move(0,0,0,3,'b');
                   theGui.printChessGUI(theBoard->getBoard());
                   gettingMove = false;
                 }

@@ -451,7 +451,7 @@ string chessPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
 			{
 				if (x1+i >= 0 && x1 + i < 8 && y1 + j >= 0 && y1 + j < 8)
 				{
-					if (chessPieceArray[x1+i][y1+j].get_pieceType() == '*' || chessPieceArray[x1+i][y1+j].get_pieceColor() != this->get_pieceColor() && (i != 0 || j !=0))
+					if ((chessPieceArray[x1+i][y1+j].get_pieceType() == '*' || chessPieceArray[x1+i][y1+j].get_pieceColor() != this->get_pieceColor()) && (i != 0 || j !=0))
 					{
 						moves << x1 << y1 << x1 + i << y1 + j << chessPieceArray[x1+i][y1+j].get_pieceType();
 					}
@@ -467,41 +467,12 @@ NullPiece::NullPiece(char pieceColor) {
 	this->pieceColor = pieceColor;
 	pieceType = '*';
 }
-//TODO
 
-string NullPiece::getMoves(int x1, int y1, chessPiece** chessPieceArray)
-{
-
-}
 
 Pawn::Pawn(char pieceColor) {
 
 	this->pieceColor = pieceColor;
 	pieceType = 'p';
-}
-//TODO
-//must be called with x1, y1 as well
-
-string Pawn::getMoves(int x1, int y1, chessPiece** chessPieceArray)
-{
-	stringstream moves;
-	if (pieceColor == 'w')
-	{
-		int i = -1;
-		while (i < 2)
-		{
-			if (chessPieceArray[x1-1][y1+i].get_pieceType() == '*' && i == 0)
-			{
-				moves << x1 << y1 << x1-1 << y1+i << '*';
-			}
-			else if(chessPieceArray[x1-1][y1+i].get_pieceColor() == 'b' && i != 0)
-			{
-				moves << x1 << y1 << x1-1 << y1+i << chessPieceArray[x1-1][y1+i].get_pieceType();
-			}
-		i++;
-		}
-	}
-
 }
 
 
@@ -510,58 +481,29 @@ Rook::Rook(char pieceColor) {
 	this->pieceColor = pieceColor;
 	pieceType = 'r';
 }
-//TODO
-
-string Rook::getMoves(int x1, int y1, chessPiece** chessPieceArray)
-{
-
-}
 
 Knight::Knight(char pieceColor) {
 
 	this->pieceColor = pieceColor;
 	pieceType = 'k';
 }
-//TODO
 
-string Knight::getMoves(int x1, int y1, chessPiece** chessPieceArray)
-{
-
-}
 
 Bishop::Bishop(char pieceColor) {
 
 	this->pieceColor = pieceColor;
 	pieceType = 'b';
 }
-//TODO
 
-string Bishop::getMoves(int x1, int y1, chessPiece** chessPieceArray)
-{
-
-}
 
 Queen::Queen(char pieceColor) {
 
 	this->pieceColor = pieceColor;
 	this->pieceType = 'q';
 }
-//TODO
-
-
-string Queen::getMoves(int x1, int y1, chessPiece** chessPieceArray)
-{
-
-}
 
 King::King(char pieceColor) {
 
 	this->pieceColor = pieceColor;
 	this->pieceType = 'o'; //o is king
-}
-//TODO
-
-string King::getMoves(int x1, int y1, chessPiece** chessPieceArray)
-{
-
 }

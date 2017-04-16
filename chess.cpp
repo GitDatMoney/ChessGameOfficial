@@ -233,7 +233,6 @@ bool chess::move(int x1, int y1, int x2, int y2, char c)
 	  return false;
   }
   else{
-		chessPiece temp = chessPieceArray[x2][y2];
 		chessPieceArray[x2][y2] = chessPieceArray[x1][y1];
 		chessPieceArray[x1][y1] = NullPiece('*');
   }
@@ -313,17 +312,8 @@ void chess::setupRandomBoard() {
 bool chess::checkForCheckmate(char c)
 {
 	string potMoves;
-	char opColor;
-	if (c == 'w')
-	{
-		opColor = 'b';
-	}
-	else
-	{
-		opColor = 'w';
-	}
 	potMoves = this->getColorMoves(c);
-	for (int i = 0; i<potMoves.size()/5; i+=5)
+	for (unsigned int i = 0; i<potMoves.size()/5; i+=5)
 	{
 		if (!this->checkForCheck(potMoves.at(i)-'0',potMoves.at(i+1)-'0',potMoves.at(i+2)-'0',potMoves.at(i+3)-'0',c));
 		{

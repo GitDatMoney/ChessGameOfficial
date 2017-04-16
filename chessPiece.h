@@ -12,7 +12,7 @@ public:
 	char get_pieceType();
 	char get_pieceColor();
 	//Gets all possible moves relative to the x1,y1 input from the user based on the board passed in
-	virtual string getMoves(int x1, int y1, chessPiece** chessPieceArray);
+	string getMoves(int x1, int y1, chessPiece** chessPieceArray);
 
 protected:
 	//Data fields belonging to each piece
